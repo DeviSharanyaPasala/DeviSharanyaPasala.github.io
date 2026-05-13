@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devi Sharanya Pasala — DevOps & MLOps Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --ink:     #0d0d0d;
+  --ink-2:   #2a2a2a;
+  --ink-3:   #5a5a5a;
+  --paper:   #f5f2ed;
+  --paper-2: #ede9e1;
+  --rule:    #d4cec4;
+  --gold:    #b8933a;
+  --gold-lt: #d4a84b;
+  --white:   #ffffff;
+  --navy:    #0e1c35;
+}
+
+body { font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); overflow-x:hidden; }
+
+/* cursor */
+#cursor { width:10px; height:10px; border-radius:50%; background:var(--gold); position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s,height .2s,background .2s; mix-blend-mode:multiply; }
+#cursor.lg { width:38px; height:38px; background:rgba(184,147,58,.25); }
+*,a,button { cursor:none !important; }
+
+/* nav */
+nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:0 5%; height:60px; background:rgba(245,242,237,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); }
+.nav-logo { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--ink); text-decoration:none; }
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a { font-size:.76rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); text-decoration:none; transition:color .2s; }
+.nav-links a:hover,.nav-links a.active { color:var(--gold); }
+
+/* hero */
+#hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding:0 5%; padding-top:60px; overflow:hidden; position:relative; }
+.hero-left { display:flex; flex-direction:column; justify-content:center; padding-right:4rem; position:relative; z-index:2; }
+.hero-tag { font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.15em; color:var(--gold); text-transform:uppercase; margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; opacity:0; animation:up .7s ease forwards .2s; }
+.hero-tag::before { content:''; width:32px; height:1px; background:var(--gold); }
+.hero-name { font-family:'DM Serif Display',serif; font-size:clamp(3rem,5.5vw,5.5rem); line-height:1.0; color:var(--ink); margin-bottom:.5rem; opacity:0; animation:up .7s ease forwards .4s; }
+.hero-name em { font-style:italic; color:var(--gold); }
+.hero-sub { font-size:.95rem; color:var(--ink-3); font-weight:300; letter-spacing:.04em; margin-bottom:2.5rem; opacity:0; animation:up .7s ease forwards .6s; }
+.hero-desc { font-size:.95rem; color:var(--ink-2); line-height:1.9; max-width:440px; margin-bottom:2.5rem; opacity:0; animation:up .7s ease forwards .8s; }
+.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:up .7s ease forwards 1s; }
+.btn { font-family:'DM Sans',sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:.75rem 1.8rem; text-decoration:none; transition:all .25s; display:inline-block; }
+.btn-solid { background:var(--ink); color:var(--paper); border:1.5px solid var(--ink); }
+.btn-solid:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+.btn-outline { background:transparent; color:var(--ink); border:1.5px solid var(--ink-3); }
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+/* hero right */
+.hero-right { display:flex; align-items:center; justify-content:center; opacity:0; animation:fadeIn 1s ease forwards .6s; }
+.hero-graphic { width:min(400px,90%); aspect-ratio:1; position:relative; }
+.ring { position:absolute; inset:0; border-radius:50%; border:1px solid var(--rule); animation:spin 30s linear infinite; }
+.ring:nth-child(2) { inset:9%; border-style:dashed; animation-direction:reverse; animation-duration:20s; }
+.ring:nth-child(3) { inset:19%; animation-duration:15s; }
+.hcenter { position:absolute; inset:30%; border-radius:50%; background:var(--navy); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.3rem; }
+.hct { font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.08em; color:rgba(255,255,255,.55); text-align:center; line-height:1.7; }
+.hct strong { color:var(--gold-lt); display:block; font-size:.68rem; }
+.olabel { position:absolute; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.05em; color:var(--ink-3); white-space:nowrap; background:var(--paper); padding:.2rem .5rem; border:1px solid var(--rule); transform:translate(-50%,-50%); }
+
+/* section */
+section { padding:6rem 5%; }
+.sec-label { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; display:flex; align-items:center; gap:.6rem; }
+.sec-label::after { content:''; height:1px; width:32px; background:var(--gold); }
+.sec-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,3.5vw,3rem); color:var(--ink); line-height:1.15; margin-bottom:.5rem; }
+.sec-title em { font-style:italic; color:var(--gold); }
+
+/* about */
+#about { background:var(--white); }
+.about-wrap { display:grid; grid-template-columns:3fr 2fr; gap:5rem; margin-top:3rem; align-items:start; }
+.about-body p { font-size:1rem; color:var(--ink-2); line-height:1.9; margin-bottom:1.25rem; }
+.stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); margin-top:2.5rem; border:1px solid var(--rule); }
+.stat { background:var(--white); padding:1.5rem; text-align:center; }
+.stat-n { font-family:'DM Serif Display',serif; font-size:2.2rem; color:var(--ink); line-height:1; margin-bottom:.3rem; }
+.stat-n span { color:var(--gold); }
+.stat-l { font-size:.72rem; color:var(--ink-3); letter-spacing:.06em; text-transform:uppercase; }
+.about-side h3 { font-family:'DM Serif Display',serif; font-size:1.2rem; color:var(--ink); margin-bottom:1.25rem; }
+.check-list { list-style:none; display:flex; flex-direction:column; gap:.65rem; }
+.check-list li { display:flex; gap:.75rem; align-items:flex-start; font-size:.9rem; color:var(--ink-2); line-height:1.5; }
+.check-list li::before { content:'✓'; color:var(--gold); font-weight:600; flex-shrink:0; }
+.edu-cards { margin-top:2rem; display:flex; flex-direction:column; gap:.75rem; }
+.edu-card { padding:1rem 1.25rem; border-left:3px solid var(--gold); background:var(--paper); }
+.edu-deg { font-weight:600; font-size:.9rem; color:var(--ink); }
+.edu-school { font-size:.8rem; color:var(--ink-3); margin-top:.15rem; }
+.edu-yr { font-family:'DM Mono',monospace; font-size:.72rem; color:var(--gold); margin-top:.15rem; }
+
+/* skills */
+#skills { background:var(--paper); }
+.skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); margin-top:3rem; border:1px solid var(--rule); }
+.skill-card { background:var(--paper); padding:1.75rem 1.5rem; transition:background .2s; position:relative; overflow:hidden; }
+.skill-card::after { content:''; position:absolute; bottom:0; left:0; height:2px; width:0; background:var(--gold); transition:width .3s ease; }
+.skill-card:hover { background:var(--white); }
+.skill-card:hover::after { width:100%; }
+.skill-icon { font-size:1.4rem; margin-bottom:.75rem; }
+.skill-name { font-family:'DM Serif Display',serif; font-size:1rem; color:var(--ink); margin-bottom:.75rem; }
+.skill-chips { display:flex; flex-wrap:wrap; gap:.4rem; }
+.chip { font-family:'DM Mono',monospace; font-size:.65rem; padding:.25rem .6rem; background:var(--paper-2); color:var(--ink-2); border:1px solid var(--rule); letter-spacing:.03em; }
+.chip.hot { background:rgba(184,147,58,.12); border-color:rgba(184,147,58,.4); color:var(--gold); }
+
+/* experience */
+#experience { background:var(--navy); }
+#experience .sec-title { color:var(--white); }
+#experience .sec-label { color:var(--gold-lt); }
+#experience .sec-label::after { background:var(--gold-lt); }
+.exp-list { margin-top:3rem; position:relative; padding-left:0; }
+.exp-list::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:rgba(255,255,255,.1); }
+.exp-item { padding:0 0 3rem 2.5rem; position:relative; }
+.exp-item::before { content:''; position:absolute; left:-4px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 3px rgba(184,147,58,.2); }
+.exp-period { font-family:'DM Mono',monospace; font-size:.7rem; color:var(--gold-lt); letter-spacing:.1em; margin-bottom:.35rem; }
+.exp-role { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--white); margin-bottom:.15rem; }
+.exp-co { font-size:.85rem; color:rgba(255,255,255,.4); font-style:italic; margin-bottom:1rem; }
+.exp-pts { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+.exp-pts li { font-size:.88rem; color:rgba(255,255,255,.6); line-height:1.75; padding-left:1rem; position:relative; }
+.exp-pts li::before { content:'—'; position:absolute; left:0; color:var(--gold); font-size:.75rem; }
+
+/* projects */
+#projects { background:var(--paper-2); }
+.proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:3rem; }
+.proj-card { background:var(--white); border:1px solid var(--rule); overflow:hidden; transition:transform .25s,box-shadow .25s; }
+.proj-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.08); }
+.proj-top { background:var(--navy); padding:2rem; position:relative; overflow:hidden; }
+.proj-num { font-family:'DM Serif Display',serif; font-size:4rem; color:rgba(255,255,255,.05); position:absolute; right:1.25rem; top:.5rem; line-height:1; }
+.proj-title { font-family:'DM Serif Display',serif; font-size:1.15rem; color:var(--white); margin-bottom:.5rem; position:relative; z-index:1; }
+.proj-stack { font-family:'DM Mono',monospace; font-size:.68rem; color:var(--gold-lt); letter-spacing:.05em; position:relative; z-index:1; }
+.proj-body { padding:1.75rem; }
+.proj-desc { font-size:.9rem; color:var(--ink-2); line-height:1.8; margin-bottom:1.25rem; }
+.proj-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+
+/* contact */
+#contact { background:var(--white); text-align:center; }
+.contact-inner { max-width:580px; margin:0 auto; }
+.contact-inner .sec-label { justify-content:center; }
+.contact-inner .sec-label::after { display:none; }
+.contact-sub { font-size:1rem; color:var(--ink-3); line-height:1.9; margin:1rem 0 3rem; }
+.contact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:2.5rem; }
+.contact-item { background:var(--white); padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:.4rem; text-decoration:none; transition:background .2s; }
+.contact-item:hover { background:var(--paper); }
+.ci-icon { font-size:1.3rem; }
+.ci-label { font-family:'DM Mono',monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+.ci-val { font-size:.85rem; color:var(--ink); font-weight:500; }
+.footer-note { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--rule); padding-top:2rem; border-top:1px solid var(--rule); }
+
+/* animations */
+@keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+.reveal.vis { opacity:1; transform:translateY(0); }
+
+/* responsive */
+@media(max-width:960px) {
+  #hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .about-wrap { grid-template-columns:1fr; gap:2.5rem; }
+  .skills-grid { grid-template-columns:repeat(2,1fr); }
+  .proj-grid { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+}
+@media(max-width:600px) {
+  .nav-links { display:none; }
+  .skills-grid { grid-template-columns:1fr; }
+  .stats-row { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<nav>
+  <a class="nav-logo" href="#hero">DSP</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">DevOps Engineer · MLOps</div>
+    <h1 class="hero-name">Devi<br>Sharanya<br><em>Pasala</em></h1>
+    <p class="hero-sub">Cloud Infrastructure · Kubernetes · CI/CD · ML Pipelines</p>
+    <p class="hero-desc">Building reliable, scalable infrastructure on AWS — from Terraform-provisioned EKS clusters to containerized ML model deployments. I make production systems boring in the best possible way.</p>
+    <div class="hero-btns">
+      <a class="btn btn-solid" href="#projects">View Projects</a>
+      <a class="btn btn-outline" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-graphic" id="hg">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="hcenter">
+        <div class="hct"><strong>DevOps</strong>+<strong>MLOps</strong>AWS · K8s</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">01 · About</div>
+  <h2 class="sec-title">A little about <em>me</em></h2>
+  <div class="about-wrap">
+    <div class="about-body reveal">
+      <p>I'm a DevOps Engineer with a growing specialization in MLOps, passionate about building infrastructure that's reliable enough to be boring. My work sits at the intersection of cloud engineering and machine learning — I care about not just training models, but shipping them reliably.</p>
+      <p>Currently volunteering as a DevOps Engineer at Saayam For All where I own the full AWS stack — EKS cluster management, serverless microservices, CI/CD pipelines, and monitoring. Before that, I cut ticket resolution time by 30% at Tech Mahindra through smart automation.</p>
+      <p>I hold an M.S. in Information Science from the University at Albany (GPA 3.5) and a B.Tech in Computer Science from GITAM University. Actively pursuing AWS DevOps Professional and AWS ML Specialty certifications.</p>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-n"><span>30</span>%</div><div class="stat-l">Faster incident resolution</div></div>
+        <div class="stat"><div class="stat-n"><span>4</span>min</div><div class="stat-l">Full CI/CD cycle</div></div>
+        <div class="stat"><div class="stat-n"><span>97</span>%</div><div class="stat-l">ML model accuracy</div></div>
+      </div>
+    </div>
+    <div class="about-side reveal">
+      <h3>Core strengths</h3>
+      <ul class="check-list">
+        <li>Kubernetes cluster management on AWS EKS</li>
+        <li>Infrastructure as Code with Terraform</li>
+        <li>CI/CD pipelines — GitHub Actions, ArgoCD</li>
+        <li>ML model deployment on SageMaker</li>
+        <li>Experiment tracking with MLflow</li>
+        <li>Monitoring with Prometheus & Grafana</li>
+        <li>Serverless architecture — AWS Lambda</li>
+      </ul>
+      <div class="edu-cards">
+        <div class="edu-card">
+          <div class="edu-deg">M.S. Information Science</div>
+          <div class="edu-school">University at Albany, SUNY</div>
+          <div class="edu-yr">Dec 2025 · GPA 3.5</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-deg">B.Tech, Computer Science & Engineering</div>
+          <div class="edu-school">GITAM University, India</div>
+          <div class="edu-yr">May 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-label">02 · Skills</div>
+  <h2 class="sec-title">Technical <em>toolkit</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-name">Cloud & Infra</div>
+      <div class="skill-chips">
+        <span class="chip hot">AWS EKS</span><span class="chip">EC2</span><span class="chip">S3</span>
+        <span class="chip">Lambda</span><span class="chip">API Gateway</span><span class="chip">Cognito</span>
+        <span class="chip">CloudWatch</span><span class="chip">IAM</span><span class="chip">VPC</span><span class="chip">GCP</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🐳</div>
+      <div class="skill-name">Containers</div>
+      <div class="skill-chips">
+        <span class="chip hot">Kubernetes</span><span class="chip hot">Docker</span>
+        <span class="chip">Helm</span><span class="chip">ECR</span><span class="chip">minikube</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔁</div>
+      <div class="skill-name">CI/CD & IaC</div>
+      <div class="skill-chips">
+        <span class="chip hot">GitHub Actions</span><span class="chip hot">Terraform</span>
+        <span class="chip">Jenkins</span><span class="chip">ArgoCD</span><span class="chip">CloudFormation</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">MLOps</div>
+      <div class="skill-chips">
+        <span class="chip hot">MLflow</span><span class="chip hot">SageMaker</span>
+        <span class="chip">Kubeflow</span><span class="chip">Model Versioning</span>
+        <span class="chip">Feature Stores</span><span class="chip">A/B Testing</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🧠</div>
+      <div class="skill-name">ML & AI</div>
+      <div class="skill-chips">
+        <span class="chip hot">TensorFlow</span><span class="chip">Keras</span><span class="chip">PyTorch</span>
+        <span class="chip">Scikit-learn</span><span class="chip">NLP</span><span class="chip">CNN</span><span class="chip">LSTM</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Monitoring</div>
+      <div class="skill-chips">
+        <span class="chip hot">Prometheus</span><span class="chip hot">Grafana</span>
+        <span class="chip">CloudWatch</span><span class="chip">Alerting</span><span class="chip">Log Aggregation</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">💻</div>
+      <div class="skill-name">Languages</div>
+      <div class="skill-chips">
+        <span class="chip hot">Python</span><span class="chip">Bash</span>
+        <span class="chip">SQL</span><span class="chip">JavaScript</span><span class="chip">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-name">Tools & Practices</div>
+      <div class="skill-chips">
+        <span class="chip">Apache Kafka</span><span class="chip">Git</span>
+        <span class="chip">Linux</span><span class="chip">Jira</span>
+        <span class="chip">Agile/Scrum</span><span class="chip">Spring Boot 3</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-label">03 · Experience</div>
+  <h2 class="sec-title" style="color:var(--white)">Where I've <em>worked</em></h2>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-period">Oct 2025 — Present</div>
+      <div class="exp-role">DevOps & Full-Stack Engineer</div>
+      <div class="exp-co">Saayam For All · Volunteer · Remote</div>
+      <ul class="exp-pts">
+        <li>Managed Kubernetes deployments on AWS EKS including rolling updates, autoscaling, and pod health checks to keep a live nonprofit platform stable under variable load.</li>
+        <li>Built the full AWS infrastructure stack — API Gateway, Lambda, Cognito, S3, CloudWatch — with metric-based alarms that cut mean time to detect incidents from hours to under 5 minutes.</li>
+        <li>Automated the full release cycle via GitHub Actions: tests → Docker build → ECR push → Helm deploy to EKS on every merge, end-to-end in under 4 minutes.</li>
+      </ul>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-period">Jun 2023 — Jan 2024</div>
+      <div class="exp-role">Software Developer</div>
+      <div class="exp-co">Tech Mahindra · Hyderabad, India</div>
+      <ul class="exp-pts">
+        <li>Automated incident management workflows via REST APIs in ServiceNow, cutting ticket-handling time by 30%.</li>
+        <li>Rewrote backend SQL queries with optimized joins and indexing, dropping average response time from 8 seconds to under 1 second. Coordinated production deployments across Agile sprints in Jira.</li>
+      </ul>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-period">May 2022 — Aug 2022</div>
+      <div class="exp-role">Web Development Intern</div>
+      <div class="exp-co">LetsGrowMore · Remote</div>
+      <ul class="exp-pts">
+        <li>Built responsive front-end applications with HTML, CSS, and JavaScript; integrated RESTful APIs and created a shared component library that reduced UI inconsistencies across 5 projects.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-label">04 · Projects</div>
+  <h2 class="sec-title">Things I've <em>built</em></h2>
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">01</div>
+        <div class="proj-title">Zero-Downtime CI/CD Pipeline</div>
+        <div class="proj-stack">GitHub Actions · Docker · AWS EKS · Helm · Terraform</div>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc">A full GitOps pipeline from commit to production — automated testing, Docker build, ECR push, and Helm deploy to EKS completing end-to-end in under 4 minutes. Blue/green deployment with one-command rollback; entire cluster provisioned via Terraform.</p>
+        <div class="proj-tags"><span class="chip hot">GitOps</span><span class="chip">Blue/Green</span><span class="chip">EKS</span><span class="chip">Helm</span><span class="chip">Terraform</span></div>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">02</div>
+        <div class="proj-title">ML Model CI/CD — Breast Cancer Detection</div>
+        <div class="proj-stack">TensorFlow · Docker · AWS SageMaker · MLflow · GitHub Actions</div>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc">End-to-end MLOps pipeline that trains, evaluates, versions, and deploys a CNN classification model (97% accuracy on CBIS-DDSM) to a containerized SageMaker inference endpoint. MLflow tracks experiments; GitHub Actions automates retraining on new data.</p>
+        <div class="proj-tags"><span class="chip hot">MLOps</span><span class="chip">CNN</span><span class="chip">SageMaker</span><span class="chip">MLflow</span><span class="chip">97% Accuracy</span></div>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Cloud Monitor with Auto-Remediation</div>
+        <div class="proj-stack">AWS Lambda · CloudWatch · SNS · Python · Terraform</div>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc">Serverless monitoring stack watching EC2 and ECS health metrics, auto-restarting unhealthy containers via Lambda, and sending structured Slack/email alerts with full context — before on-call engineers even notice the issue.</p>
+        <div class="proj-tags"><span class="chip hot">Serverless</span><span class="chip">Auto-Heal</span><span class="chip">CloudWatch</span><span class="chip">SNS</span><span class="chip">IaC</span></div>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <div class="proj-num">04</div>
+        <div class="proj-title">Kafka Log Aggregation & Anomaly Detection</div>
+        <div class="proj-stack">Apache Kafka · Python · PostgreSQL · Grafana · Docker</div>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc">Streaming pipeline ingesting ~10,000 events/min through Kafka into PostgreSQL, with a rule-based anomaly detector surfacing error spikes and latency outliers in Grafana. Caught two real bugs invisible in plain log files during testing.</p>
+        <div class="proj-tags"><span class="chip hot">Kafka</span><span class="chip">Streaming</span><span class="chip">Grafana</span><span class="chip">Anomaly Detection</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sec-label" style="justify-content:center;">05 · Contact</div>
+    <h2 class="sec-title">Let's <em>connect</em></h2>
+    <p class="contact-sub">Open to DevOps, MLOps, Cloud Infrastructure, and SRE roles. I reply to every message.</p>
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:devisharanyap@gmail.com">
+        <div class="ci-icon">✉️</div>
+        <div class="ci-label">Email</div>
+        <div class="ci-val">devisharanyap@gmail.com</div>
+      </a>
+      <a class="contact-item" href="tel:5185919702">
+        <div class="ci-icon">📞</div>
+        <div class="ci-label">Phone</div>
+        <div class="ci-val">518-591-9702</div>
+      </a>
+      <a class="contact-item" href="https://linkedin.com/in/devisharanya" target="_blank">
+        <div class="ci-icon">💼</div>
+        <div class="ci-label">LinkedIn</div>
+        <div class="ci-val">linkedin.com/in/devisharanya</div>
+      </a>
+      <a class="contact-item" href="https://github.com/DeviSharanya" target="_blank">
+        <div class="ci-icon">⌨️</div>
+        <div class="ci-label">GitHub</div>
+        <div class="ci-val">github.com/DeviSharanya</div>
+      </a>
+    </div>
+    <div class="footer-note">DEVI SHARANYA PASALA · DEVOPS ENGINEER · MLOPS · ALBANY, NY · 2025</div>
+  </div>
+</section>
+
+<script>
+// cursor
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('lg'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('lg'));
+});
+
+// reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('vis'),i*90); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// active nav
+const secs = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let active = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) active = s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+active));
+});
+
+// orbit labels on hero graphic
+const hg = document.getElementById('hg');
+if(hg) {
+  const labels = ['AWS EKS','Terraform','MLflow','Kubernetes','SageMaker','GitHub Actions'];
+  labels.forEach((label, i) => {
+    const angle = (i / labels.length) * 2 * Math.PI - Math.PI/2;
+    const r = 47;
+    const x = 50 + r * Math.cos(angle);
+    const y = 50 + r * Math.sin(angle);
+    const el = document.createElement('div');
+    el.className = 'olabel';
+    el.textContent = label;
+    el.style.left = x + '%';
+    el.style.top  = y + '%';
+    hg.appendChild(el);
+  });
+}
+</script>
+</body>
+</html>
