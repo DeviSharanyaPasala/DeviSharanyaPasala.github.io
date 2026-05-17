@@ -130,6 +130,8 @@ section { padding:6rem 5%; }
 .proj-body { padding:1.75rem; }
 .proj-desc { font-size:.9rem; color:var(--ink-2); line-height:1.8; margin-bottom:1.25rem; }
 .proj-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+.proj-link { display:inline-block; margin-top:1rem; font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--gold); text-decoration:none; text-transform:uppercase; }
+.proj-link:hover { color:var(--gold-lt); }
 
 /* contact */
 #contact { background:var(--white); text-align:center; }
@@ -218,7 +220,7 @@ section { padding:6rem 5%; }
       <p>I hold an M.S. in Information Science from the University at Albany (GPA 3.5) and a B.Tech in Computer Science from GITAM University. Actively pursuing AWS DevOps Professional and AWS ML Specialty certifications.</p>
       <div class="stats-row">
         <div class="stat"><div class="stat-n"><span>30</span>%</div><div class="stat-l">Faster incident resolution</div></div>
-        <div class="stat"><div class="stat-n"><span>4</span>min</div><div class="stat-l">Full CI/CD cycle</div></div>
+        <div class="stat"><div class="stat-n"><span>35</span>s</div><div class="stat-l">Full CI/CD cycle</div></div>
         <div class="stat"><div class="stat-n"><span>97</span>%</div><div class="stat-l">ML model accuracy</div></div>
       </div>
     </div>
@@ -371,8 +373,9 @@ section { padding:6rem 5%; }
         <div class="proj-stack">GitHub Actions · Docker · AWS EKS · Helm · Terraform</div>
       </div>
       <div class="proj-body">
-        <p class="proj-desc">A full GitOps pipeline from commit to production — automated testing, Docker build, ECR push, and Helm deploy to EKS completing end-to-end in under 4 minutes. Blue/green deployment with one-command rollback; entire cluster provisioned via Terraform.</p>
-        <div class="proj-tags"><span class="chip hot">GitOps</span><span class="chip">Blue/Green</span><span class="chip">EKS</span><span class="chip">Helm</span><span class="chip">Terraform</span></div>
+        <p class="proj-desc">Provisioned a 2-node EKS cluster and ECR registry on AWS with Terraform, containerized a Flask app with Docker, and deployed to Kubernetes via Helm with rolling updates (maxUnavailable: 0). Every push to main triggers a 3-stage GitHub Actions pipeline — test, build, deploy — completing in under 35 seconds.</p>
+        <div class="proj-tags"><span class="chip hot">EKS</span><span class="chip">Helm</span><span class="chip">Terraform</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span></div>
+        <a class="proj-link" href="https://github.com/DeviSharanyaPasala/Zero-Downtime-CICD-Pipeline" target="_blank">View on GitHub →</a>
       </div>
     </div>
     <div class="proj-card reveal">
@@ -433,10 +436,10 @@ section { padding:6rem 5%; }
         <div class="ci-label">LinkedIn</div>
         <div class="ci-val">linkedin.com/in/devisharanya</div>
       </a>
-      <a class="contact-item" href="https://github.com/DeviSharanya" target="_blank">
+      <a class="contact-item" href="https://github.com/DeviSharanyaPasala" target="_blank">
         <div class="ci-icon">⌨️</div>
         <div class="ci-label">GitHub</div>
-        <div class="ci-val">github.com/DeviSharanya</div>
+        <div class="ci-val">github.com/DeviSharanyaPasala</div>
       </a>
     </div>
     <div class="footer-note">DEVI SHARANYA PASALA · DEVOPS ENGINEER · MLOPS · ALBANY, NY · 2025</div>
