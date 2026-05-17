@@ -24,19 +24,16 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 body { font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); overflow-x:hidden; }
 
-/* cursor */
 #cursor { width:10px; height:10px; border-radius:50%; background:var(--gold); position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s,height .2s,background .2s; mix-blend-mode:multiply; }
 #cursor.lg { width:38px; height:38px; background:rgba(184,147,58,.25); }
 *,a,button { cursor:none !important; }
 
-/* nav */
 nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:0 5%; height:60px; background:rgba(245,242,237,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); }
 .nav-logo { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--ink); text-decoration:none; }
 .nav-links { display:flex; gap:2.5rem; list-style:none; }
 .nav-links a { font-size:.76rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); text-decoration:none; transition:color .2s; }
 .nav-links a:hover,.nav-links a.active { color:var(--gold); }
 
-/* hero */
 #hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding:0 5%; padding-top:60px; overflow:hidden; position:relative; }
 .hero-left { display:flex; flex-direction:column; justify-content:center; padding-right:4rem; position:relative; z-index:2; }
 .hero-tag { font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.15em; color:var(--gold); text-transform:uppercase; margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; opacity:0; animation:up .7s ease forwards .2s; }
@@ -52,7 +49,6 @@ nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-i
 .btn-outline { background:transparent; color:var(--ink); border:1.5px solid var(--ink-3); }
 .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
 
-/* hero right */
 .hero-right { display:flex; align-items:center; justify-content:center; opacity:0; animation:fadeIn 1s ease forwards .6s; }
 .hero-graphic { width:min(400px,90%); aspect-ratio:1; position:relative; }
 .ring { position:absolute; inset:0; border-radius:50%; border:1px solid var(--rule); animation:spin 30s linear infinite; }
@@ -63,14 +59,12 @@ nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-i
 .hct strong { color:var(--gold-lt); display:block; font-size:.68rem; }
 .olabel { position:absolute; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.05em; color:var(--ink-3); white-space:nowrap; background:var(--paper); padding:.2rem .5rem; border:1px solid var(--rule); transform:translate(-50%,-50%); }
 
-/* section */
 section { padding:6rem 5%; }
 .sec-label { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; display:flex; align-items:center; gap:.6rem; }
 .sec-label::after { content:''; height:1px; width:32px; background:var(--gold); }
 .sec-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,3.5vw,3rem); color:var(--ink); line-height:1.15; margin-bottom:.5rem; }
 .sec-title em { font-style:italic; color:var(--gold); }
 
-/* about */
 #about { background:var(--white); }
 .about-wrap { display:grid; grid-template-columns:3fr 2fr; gap:5rem; margin-top:3rem; align-items:start; }
 .about-body p { font-size:1rem; color:var(--ink-2); line-height:1.9; margin-bottom:1.25rem; }
@@ -89,7 +83,6 @@ section { padding:6rem 5%; }
 .edu-school { font-size:.8rem; color:var(--ink-3); margin-top:.15rem; }
 .edu-yr { font-family:'DM Mono',monospace; font-size:.72rem; color:var(--gold); margin-top:.15rem; }
 
-/* skills */
 #skills { background:var(--paper); }
 .skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); margin-top:3rem; border:1px solid var(--rule); }
 .skill-card { background:var(--paper); padding:1.75rem 1.5rem; transition:background .2s; position:relative; overflow:hidden; }
@@ -102,7 +95,6 @@ section { padding:6rem 5%; }
 .chip { font-family:'DM Mono',monospace; font-size:.65rem; padding:.25rem .6rem; background:var(--paper-2); color:var(--ink-2); border:1px solid var(--rule); letter-spacing:.03em; }
 .chip.hot { background:rgba(184,147,58,.12); border-color:rgba(184,147,58,.4); color:var(--gold); }
 
-/* experience */
 #experience { background:var(--navy); }
 #experience .sec-title { color:var(--white); }
 #experience .sec-label { color:var(--gold-lt); }
@@ -116,9 +108,8 @@ section { padding:6rem 5%; }
 .exp-co { font-size:.85rem; color:rgba(255,255,255,.4); font-style:italic; margin-bottom:1rem; }
 .exp-pts { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
 .exp-pts li { font-size:.88rem; color:rgba(255,255,255,.6); line-height:1.75; padding-left:1rem; position:relative; }
-.exp-pts li::before { content:'—'; position:absolute; left:0; color:var(--gold); font-size:.75rem; }
+.exp-pts li::before { content:''; position:absolute; left:0; color:var(--gold); font-size:.75rem; }
 
-/* projects */
 #projects { background:var(--paper-2); }
 .proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:3rem; }
 .proj-card { background:var(--white); border:1px solid var(--rule); overflow:hidden; transition:transform .25s,box-shadow .25s; }
@@ -133,7 +124,6 @@ section { padding:6rem 5%; }
 .proj-link { display:inline-block; margin-top:1rem; font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--gold); text-decoration:none; text-transform:uppercase; }
 .proj-link:hover { color:var(--gold-lt); }
 
-/* contact */
 #contact { background:var(--white); text-align:center; }
 .contact-inner { max-width:580px; margin:0 auto; }
 .contact-inner .sec-label { justify-content:center; }
@@ -147,14 +137,12 @@ section { padding:6rem 5%; }
 .ci-val { font-size:.85rem; color:var(--ink); font-weight:500; }
 .footer-note { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--rule); padding-top:2rem; border-top:1px solid var(--rule); }
 
-/* animations */
 @keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
 .reveal.vis { opacity:1; transform:translateY(0); }
 
-/* responsive */
 @media(max-width:960px) {
   #hero { grid-template-columns:1fr; }
   .hero-right { display:none; }
@@ -185,13 +173,12 @@ section { padding:6rem 5%; }
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-tag">DevOps Engineer · MLOps</div>
     <h1 class="hero-name">Devi<br>Sharanya<br><em>Pasala</em></h1>
     <p class="hero-sub">Cloud Infrastructure · Kubernetes · CI/CD · ML Pipelines</p>
-    <p class="hero-desc">Building reliable, scalable infrastructure on AWS — from Terraform-provisioned EKS clusters to containerized ML model deployments. I make production systems boring in the best possible way.</p>
+    <p class="hero-desc">I build and maintain cloud infrastructure on AWS, from setting up Kubernetes clusters to getting ML models into production. I like systems that are simple, predictable, and easy to debug at 2am.</p>
     <div class="hero-btns">
       <a class="btn btn-solid" href="#projects">View Projects</a>
       <a class="btn btn-outline" href="#contact">Get in Touch</a>
@@ -209,18 +196,18 @@ section { padding:6rem 5%; }
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="sec-label">01 · About</div>
   <h2 class="sec-title">A little about <em>me</em></h2>
   <div class="about-wrap">
     <div class="about-body reveal">
-      <p>I'm a DevOps Engineer with a growing specialization in MLOps, passionate about building infrastructure that's reliable enough to be boring. My work sits at the intersection of cloud engineering and machine learning — I care about not just training models, but shipping them reliably.</p>
-      <p>Currently volunteering as a DevOps Engineer at Saayam For All where I own the full AWS stack — EKS cluster management, serverless microservices, CI/CD pipelines, and monitoring. Before that, I cut ticket resolution time by 30% at Tech Mahindra through smart automation.</p>
-      <p>I hold an M.S. in Information Science from the University at Albany (GPA 3.5) and a B.Tech in Computer Science from GITAM University. Actively pursuing AWS DevOps Professional and AWS ML Specialty certifications.</p>
+      <p>I'm a DevOps and MLOps engineer based in Albany, NY. I finished my M.S. in Information Science at the University at Albany in December 2025 and I'm looking for my first full-time role in DevOps or cloud infrastructure.</p>
+      <p>Most of my hands-on experience comes from Saayam For All, a nonprofit where I volunteer as a DevOps engineer. I manage their AWS infrastructure, set up CI/CD pipelines with GitHub Actions, and handle Kubernetes deployments on EKS. It's been the best learning environment I could have asked for.</p>
+      <p>Before that I worked at Tech Mahindra as a software developer, where I automated a lot of the manual work around incident management and cleaned up some slow SQL queries that were causing real pain for the team.</p>
+      <p>I'm working toward my AWS DevOps Professional and AWS ML Specialty certifications and I'm genuinely interested in roles where DevOps and ML intersect.</p>
       <div class="stats-row">
         <div class="stat"><div class="stat-n"><span>30</span>%</div><div class="stat-l">Faster incident resolution</div></div>
-        <div class="stat"><div class="stat-n"><span>35</span>s</div><div class="stat-l">Full CI/CD cycle</div></div>
+        <div class="stat"><div class="stat-n"><span>35</span>s</div><div class="stat-l">Full CI/CD pipeline</div></div>
         <div class="stat"><div class="stat-n"><span>97</span>%</div><div class="stat-l">ML model accuracy</div></div>
       </div>
     </div>
@@ -229,11 +216,11 @@ section { padding:6rem 5%; }
       <ul class="check-list">
         <li>Kubernetes cluster management on AWS EKS</li>
         <li>Infrastructure as Code with Terraform</li>
-        <li>CI/CD pipelines — GitHub Actions, ArgoCD</li>
+        <li>CI/CD pipelines with GitHub Actions</li>
         <li>ML model deployment on SageMaker</li>
         <li>Experiment tracking with MLflow</li>
-        <li>Monitoring with Prometheus & Grafana</li>
-        <li>Serverless architecture — AWS Lambda</li>
+        <li>Monitoring with Prometheus and Grafana</li>
+        <li>Serverless architecture with AWS Lambda</li>
       </ul>
       <div class="edu-cards">
         <div class="edu-card">
@@ -242,7 +229,7 @@ section { padding:6rem 5%; }
           <div class="edu-yr">Dec 2025 · GPA 3.5</div>
         </div>
         <div class="edu-card">
-          <div class="edu-deg">B.Tech, Computer Science & Engineering</div>
+          <div class="edu-deg">B.Tech, Computer Science and Engineering</div>
           <div class="edu-school">GITAM University, India</div>
           <div class="edu-yr">May 2023</div>
         </div>
@@ -251,7 +238,6 @@ section { padding:6rem 5%; }
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="sec-label">02 · Skills</div>
   <h2 class="sec-title">Technical <em>toolkit</em></h2>
@@ -326,19 +312,18 @@ section { padding:6rem 5%; }
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="sec-label">03 · Experience</div>
   <h2 class="sec-title" style="color:var(--white)">Where I've <em>worked</em></h2>
   <div class="exp-list">
     <div class="exp-item reveal">
       <div class="exp-period">Oct 2025 — Present</div>
-      <div class="exp-role">DevOps & Full-Stack Engineer</div>
+      <div class="exp-role">DevOps and Full-Stack Engineer</div>
       <div class="exp-co">Saayam For All · Volunteer · Remote</div>
       <ul class="exp-pts">
-        <li>Managed Kubernetes deployments on AWS EKS including rolling updates, autoscaling, and pod health checks to keep a live nonprofit platform stable under variable load.</li>
-        <li>Built the full AWS infrastructure stack — API Gateway, Lambda, Cognito, S3, CloudWatch — with metric-based alarms that cut mean time to detect incidents from hours to under 5 minutes.</li>
-        <li>Automated the full release cycle via GitHub Actions: tests → Docker build → ECR push → Helm deploy to EKS on every merge, end-to-end in under 4 minutes.</li>
+        <li>Own the full AWS infrastructure for a live nonprofit platform, including EKS cluster management, rolling deployments, autoscaling, and pod health monitoring.</li>
+        <li>Set up CloudWatch alarms across the serverless stack (API Gateway, Lambda, Cognito, S3) that brought incident detection time down from a few hours to under 5 minutes.</li>
+        <li>Built a GitHub Actions pipeline that runs tests, builds a Docker image, pushes it to ECR, and deploys to EKS via Helm on every merge to main, all in under 4 minutes.</li>
       </ul>
     </div>
     <div class="exp-item reveal">
@@ -346,8 +331,8 @@ section { padding:6rem 5%; }
       <div class="exp-role">Software Developer</div>
       <div class="exp-co">Tech Mahindra · Hyderabad, India</div>
       <ul class="exp-pts">
-        <li>Automated incident management workflows via REST APIs in ServiceNow, cutting ticket-handling time by 30%.</li>
-        <li>Rewrote backend SQL queries with optimized joins and indexing, dropping average response time from 8 seconds to under 1 second. Coordinated production deployments across Agile sprints in Jira.</li>
+        <li>Automated repetitive incident management tasks in ServiceNow using REST APIs, which cut the time spent per ticket by about 30%.</li>
+        <li>Rewrote several slow database queries with better joins and indexes, bringing average response times down from 8 seconds to under 1 second.</li>
       </ul>
     </div>
     <div class="exp-item reveal">
@@ -355,13 +340,12 @@ section { padding:6rem 5%; }
       <div class="exp-role">Web Development Intern</div>
       <div class="exp-co">LetsGrowMore · Remote</div>
       <ul class="exp-pts">
-        <li>Built responsive front-end applications with HTML, CSS, and JavaScript; integrated RESTful APIs and created a shared component library that reduced UI inconsistencies across 5 projects.</li>
+        <li>Built responsive web pages with HTML, CSS, and JavaScript and helped create a shared component library that made the UI more consistent across multiple projects.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="sec-label">04 · Projects</div>
   <h2 class="sec-title">Things I've <em>built</em></h2>
@@ -373,7 +357,7 @@ section { padding:6rem 5%; }
         <div class="proj-stack">GitHub Actions · Docker · AWS EKS · Helm · Terraform</div>
       </div>
       <div class="proj-body">
-        <p class="proj-desc">Provisioned a 2-node EKS cluster and ECR registry on AWS with Terraform, containerized a Flask app with Docker, and deployed to Kubernetes via Helm with rolling updates (maxUnavailable: 0). Every push to main triggers a 3-stage GitHub Actions pipeline — test, build, deploy — completing in under 35 seconds.</p>
+        <p class="proj-desc">I provisioned an EKS cluster and ECR registry on AWS using Terraform, containerized a Flask app with Docker, and wrote Helm charts to deploy it to Kubernetes with rolling updates so there's zero downtime on each release. The GitHub Actions pipeline runs tests, builds the image, and deploys to EKS in under 35 seconds on every push to main.</p>
         <div class="proj-tags"><span class="chip hot">EKS</span><span class="chip">Helm</span><span class="chip">Terraform</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span></div>
         <a class="proj-link" href="https://github.com/DeviSharanyaPasala/Zero-Downtime-CICD-Pipeline" target="_blank">View on GitHub →</a>
       </div>
@@ -385,7 +369,7 @@ section { padding:6rem 5%; }
         <div class="proj-stack">TensorFlow · Docker · AWS SageMaker · MLflow · GitHub Actions</div>
       </div>
       <div class="proj-body">
-        <p class="proj-desc">End-to-end MLOps pipeline that trains, evaluates, versions, and deploys a CNN classification model (97% accuracy on CBIS-DDSM) to a containerized SageMaker inference endpoint. MLflow tracks experiments; GitHub Actions automates retraining on new data.</p>
+        <p class="proj-desc">Built an end-to-end MLOps pipeline for a CNN model that detects breast cancer from mammograms (97% accuracy on CBIS-DDSM). MLflow tracks every experiment and model version. GitHub Actions handles retraining automatically when new data comes in and deploys the updated model to a SageMaker endpoint.</p>
         <div class="proj-tags"><span class="chip hot">MLOps</span><span class="chip">CNN</span><span class="chip">SageMaker</span><span class="chip">MLflow</span><span class="chip">97% Accuracy</span></div>
       </div>
     </div>
@@ -396,30 +380,29 @@ section { padding:6rem 5%; }
         <div class="proj-stack">AWS Lambda · CloudWatch · SNS · Python · Terraform</div>
       </div>
       <div class="proj-body">
-        <p class="proj-desc">Serverless monitoring stack watching EC2 and ECS health metrics, auto-restarting unhealthy containers via Lambda, and sending structured Slack/email alerts with full context — before on-call engineers even notice the issue.</p>
+        <p class="proj-desc">A serverless monitoring setup that watches EC2 and ECS health metrics, automatically restarts unhealthy containers using Lambda, and sends Slack and email alerts with enough context to actually be useful. The whole infrastructure is defined in Terraform.</p>
         <div class="proj-tags"><span class="chip hot">Serverless</span><span class="chip">Auto-Heal</span><span class="chip">CloudWatch</span><span class="chip">SNS</span><span class="chip">IaC</span></div>
       </div>
     </div>
     <div class="proj-card reveal">
       <div class="proj-top">
         <div class="proj-num">04</div>
-        <div class="proj-title">Kafka Log Aggregation & Anomaly Detection</div>
+        <div class="proj-title">Kafka Log Aggregation and Anomaly Detection</div>
         <div class="proj-stack">Apache Kafka · Python · PostgreSQL · Grafana · Docker</div>
       </div>
       <div class="proj-body">
-        <p class="proj-desc">Streaming pipeline ingesting ~10,000 events/min through Kafka into PostgreSQL, with a rule-based anomaly detector surfacing error spikes and latency outliers in Grafana. Caught two real bugs invisible in plain log files during testing.</p>
+        <p class="proj-desc">A streaming pipeline that processes around 10,000 log events per minute through Kafka into PostgreSQL. A rule-based detector flags error spikes and latency outliers and surfaces them in Grafana. It caught two real bugs during testing that would have been invisible in raw log files.</p>
         <div class="proj-tags"><span class="chip hot">Kafka</span><span class="chip">Streaming</span><span class="chip">Grafana</span><span class="chip">Anomaly Detection</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="sec-label" style="justify-content:center;">05 · Contact</div>
     <h2 class="sec-title">Let's <em>connect</em></h2>
-    <p class="contact-sub">Open to DevOps, MLOps, Cloud Infrastructure, and SRE roles. I reply to every message.</p>
+    <p class="contact-sub">I'm looking for DevOps, MLOps, and cloud infrastructure roles. I reply to every message, usually the same day.</p>
     <div class="contact-grid">
       <a class="contact-item" href="mailto:devisharanyap@gmail.com">
         <div class="ci-icon">✉️</div>
@@ -447,7 +430,6 @@ section { padding:6rem 5%; }
 </section>
 
 <script>
-// cursor
 const cur = document.getElementById('cursor');
 document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
 document.querySelectorAll('a,button').forEach(el => {
@@ -455,13 +437,11 @@ document.querySelectorAll('a,button').forEach(el => {
   el.addEventListener('mouseleave', () => cur.classList.remove('lg'));
 });
 
-// reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('vis'),i*90); obs.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// active nav
 const secs = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
@@ -470,7 +450,6 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+active));
 });
 
-// orbit labels on hero graphic
 const hg = document.getElementById('hg');
 if(hg) {
   const labels = ['AWS EKS','Terraform','MLflow','Kubernetes','SageMaker','GitHub Actions'];
