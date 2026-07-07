@@ -8,8 +8,14 @@
 </head>
 
 <body>
+  <div class="background-grid"></div>
+  <div class="cursor-glow"></div>
+
   <header class="navbar">
-    <div class="logo">DSP</div>
+    <a href="#" class="brand">
+      <span class="logo">DSP</span>
+      <span class="brand-text">Devi Sharanya Pasala</span>
+    </a>
 
     <nav>
       <a href="#pipeline">Pipeline</a>
@@ -17,103 +23,128 @@
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#credentials">Credentials</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-content">
+      <div class="hero-content reveal">
         <p class="eyebrow">✦ Infrastructure Command Center</p>
 
-        <h1>Devi Sharanya<br />Pasala</h1>
+        <h1>
+          Devi Sharanya
+          <span>Pasala</span>
+        </h1>
 
         <h2>DevOps Engineer | Cloud & Platform Engineering</h2>
 
         <p class="hero-text">
-          DevOps Engineer with 3+ years of experience building reliable AWS and Kubernetes
-          platforms, automating infrastructure with Terraform, improving CI/CD delivery,
-          and supporting production systems with strong observability and security practices.
+          DevOps Engineer with 3+ years of experience building AWS and Kubernetes platforms,
+          automating infrastructure with Terraform, improving CI/CD delivery, and supporting
+          production systems through observability, security scanning, and reliable release practices.
         </p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn primary">Contact Me</a>
+          <a href="#contact" class="btn primary">↗ Contact Me</a>
           <a href="#experience" class="btn secondary">View Experience</a>
           <a href="https://www.linkedin.com/in/devisharanya/" class="btn secondary" target="_blank">LinkedIn</a>
           <a href="https://github.com/DeviSharanyaPasala" class="btn secondary" target="_blank">GitHub</a>
         </div>
 
         <div class="stats-grid">
-          <div>
+          <div class="stat-card">
             <span>3+</span>
             <p>Years Experience</p>
           </div>
 
-          <div>
+          <div class="stat-card">
             <span>20–30</span>
             <p>Microservices</p>
           </div>
 
-          <div>
+          <div class="stat-card">
             <span>99.6%</span>
             <p>Platform Uptime</p>
           </div>
 
-          <div>
+          <div class="stat-card">
             <span>15–20</span>
             <p>Releases / Month</p>
           </div>
         </div>
       </div>
 
-      <aside class="identity-card">
-        <div class="status-dot"></div>
+      <!-- LIVE IDENTITY CARD -->
+      <aside class="identity-card reveal">
+        <div class="identity-top">
+          <div>
+            <p class="card-label">Operator Identity</p>
+            <h3>Devi Sharanya Pasala</h3>
+            <p>Albany, NY · Open to Relocate</p>
+          </div>
 
-        <p class="card-label">Operator Identity</p>
-        <h3>Devi Sharanya Pasala</h3>
-        <p>Albany, NY · Open to Relocate</p>
+          <div class="status-orb">
+            <span></span>
+          </div>
+        </div>
 
         <div class="live-panel">
-  <div class="live-header">
-    <span>Operator Mesh Live</span>
-    <strong>LIVE</strong>
-  </div>
+          <div class="live-header">
+            <span>Operator Mesh Live</span>
+            <strong>LIVE</strong>
+          </div>
 
-  <div class="live-grid">
-    <div class="live-item">
-      <p>Availability</p>
-      <h4>99.6%</h4>
-      <span>Operational</span>
-    </div>
+          <div class="live-grid">
+            <div class="live-item">
+              <p>Availability</p>
+              <h4>99.6%</h4>
+              <span>Operational</span>
+            </div>
 
-    <div class="live-item">
-      <p>Pipelines</p>
-      <h4>Active</h4>
-      <span>GitHub Actions</span>
-    </div>
+            <div class="live-item">
+              <p>Pipelines</p>
+              <h4>Active</h4>
+              <span>GitHub Actions</span>
+            </div>
 
-    <div class="live-item">
-      <p>Cloud</p>
-      <h4>AWS</h4>
-      <span>EKS / Lambda / S3</span>
-    </div>
+            <div class="live-item">
+              <p>Cloud</p>
+              <h4>AWS</h4>
+              <span>EKS / Lambda / S3</span>
+            </div>
 
-    <div class="live-item">
-      <p>Security</p>
-      <h4>Hardened</h4>
-      <span>Trivy / IAM</span>
-    </div>
-  </div>
-</div>
+            <div class="live-item">
+              <p>Security</p>
+              <h4>Hardened</h4>
+              <span>Trivy / IAM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="signature-box">
+          <p>Signal Signature — Deployment Cadence</p>
+
+          <div class="signal-line">
+            <span></span>
+          </div>
+
+          <ul>
+            <li>15–20 releases per month</li>
+            <li>Terraform provisioning under 15 minutes</li>
+            <li>MTTD reduced from ~22 minutes to under 6</li>
+          </ul>
+        </div>
 
         <div class="tag-cloud">
           <span>AWS</span>
           <span>EKS</span>
           <span>Terraform</span>
           <span>GitHub Actions</span>
-          <span>Docker</span>
           <span>Kubernetes</span>
+          <span>Docker</span>
           <span>Trivy</span>
           <span>Prometheus</span>
           <span>Grafana</span>
@@ -121,154 +152,218 @@
       </aside>
     </section>
 
-    <!-- PIPELINE SECTION -->
-    <section id="pipeline" class="section">
+    <!-- PIPELINE -->
+    <section id="pipeline" class="section reveal">
       <p class="section-label">CI/CD Flow</p>
       <h2>Deployment Pipeline</h2>
 
+      <div class="pipeline-strip">
+        <span>GITHUB</span>
+        <span>BUILD</span>
+        <span>DOCKER</span>
+        <span>TRIVY SCAN</span>
+        <span>TESTING</span>
+        <span>ECR</span>
+        <span>KUBERNETES</span>
+        <span>MONITORING</span>
+      </div>
+
       <div class="pipeline">
         <div class="pipeline-step">
-          <span>01</span>
+          <span>Stage 01</span>
           <h3>GitHub</h3>
-          <p>Code trigger</p>
+          <p>Triggered</p>
         </div>
 
         <div class="pipeline-step">
-          <span>02</span>
+          <span>Stage 02</span>
           <h3>Build</h3>
-          <p>Package app</p>
+          <p>Compiling</p>
         </div>
 
         <div class="pipeline-step">
-          <span>03</span>
+          <span>Stage 03</span>
           <h3>Docker</h3>
-          <p>Container image</p>
+          <p>Containerized</p>
         </div>
 
         <div class="pipeline-step">
-          <span>04</span>
-          <h3>Trivy Scan</h3>
-          <p>Block critical CVEs</p>
+          <span>Stage 04</span>
+          <h3>Security Scan</h3>
+          <p>Trivy gated</p>
         </div>
 
         <div class="pipeline-step">
-          <span>05</span>
+          <span>Stage 05</span>
           <h3>Testing</h3>
-          <p>Validate release</p>
+          <p>Validated</p>
         </div>
 
         <div class="pipeline-step">
-          <span>06</span>
+          <span>Stage 06</span>
           <h3>ECR</h3>
-          <p>Image registry</p>
+          <p>Published</p>
         </div>
 
         <div class="pipeline-step">
-          <span>07</span>
+          <span>Stage 07</span>
           <h3>Kubernetes</h3>
           <p>Rolling deploy</p>
         </div>
 
         <div class="pipeline-step">
-          <span>08</span>
+          <span>Stage 08</span>
           <h3>Monitoring</h3>
-          <p>CloudWatch / Grafana</p>
+          <p>Healthy</p>
         </div>
       </div>
 
       <div class="signal-row">
-        <span>15–20 releases per month</span>
-        <span>Critical CVEs blocked before production</span>
-        <span>MTTD reduced from ~22 mins to under 6</span>
+        <span>99.6% platform uptime</span>
+        <span>80% fewer critical ECR findings</span>
+        <span>Docker image size reduced ~35%</span>
+        <span>CloudWatch + Grafana alerting</span>
       </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="section">
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section reveal">
       <p class="section-label">Work History</p>
       <h2>Experience</h2>
 
       <div class="experience-card">
-        <div class="experience-header">
-          <div>
-            <h3>DevOps & Cloud Engineer</h3>
-            <p>Barclays · Remote</p>
+        <div class="experience-icon">☁️</div>
+
+        <div class="experience-content">
+          <div class="experience-header">
+            <div>
+              <h3>DevOps & Cloud Engineer</h3>
+              <p>Barclays · Remote</p>
+            </div>
+
+            <span>May 2025 – Present</span>
           </div>
 
-          <span>May 2025 – Present</span>
-        </div>
+          <div class="experience-block">
+            <h4>AWS, Kubernetes & Platform Operations</h4>
+            <ul>
+              <li>Own AWS and Kubernetes environments running 20 to 30 Python microservices across dev, UAT, and production.</li>
+              <li>Maintained 99.6% uptime with zero unplanned production outages last quarter.</li>
+              <li>Managed Helm charts, Kubernetes resource requests and limits, autoscaling policies, and production stability improvements.</li>
+            </ul>
+          </div>
 
-        <ul>
-          <li>Own AWS and Kubernetes environments running 20 to 30 Python microservices across dev, UAT, and production.</li>
-          <li>Maintained 99.6% uptime with zero unplanned production outages last quarter.</li>
-          <li>Built reusable Terraform modules for VPC, EKS, IAM, and S3, reducing provisioning from 3–4 hours to under 15 minutes.</li>
-          <li>Designed GitHub Actions pipelines for linting, unit testing, Docker builds, Trivy scanning, and Kubernetes rolling deployments.</li>
-          <li>Managed Helm charts, Kubernetes resource limits, autoscaling policies, and production stability improvements.</li>
-          <li>Built Prometheus and Grafana dashboards for latency, error rate, pod health, and CloudWatch-based incident alerts.</li>
-        </ul>
+          <div class="experience-block">
+            <h4>Terraform, CI/CD & DevSecOps</h4>
+            <ul>
+              <li>Built reusable Terraform modules for VPC, EKS, IAM, and S3, reducing provisioning from 3–4 hours to under 15 minutes.</li>
+              <li>Designed GitHub Actions pipelines for linting, unit testing, Docker builds, Trivy scanning, and Kubernetes rolling deployments.</li>
+              <li>Integrated Trivy into CI so critical CVEs are blocked before production deployment.</li>
+            </ul>
+          </div>
 
-        <div class="stack">
-          <span>AWS</span>
-          <span>EKS</span>
-          <span>EC2</span>
-          <span>Lambda</span>
-          <span>S3</span>
-          <span>ECR</span>
-          <span>Terraform</span>
-          <span>GitHub Actions</span>
-          <span>Kubernetes</span>
-          <span>Helm</span>
-          <span>Docker</span>
-          <span>Trivy</span>
-          <span>Prometheus</span>
-          <span>Grafana</span>
+          <div class="experience-block">
+            <h4>Observability & Serverless Workflows</h4>
+            <ul>
+              <li>Built Prometheus and Grafana dashboards for latency, error rate, pod health, and faster incident detection.</li>
+              <li>Used CloudWatch alarms and PagerDuty-connected alerts to reduce mean-time-to-detect from roughly 22 minutes to under 6.</li>
+              <li>Deployed serverless document-processing workflows using Lambda, API Gateway, Cognito, and S3.</li>
+            </ul>
+          </div>
+
+          <div class="stack">
+            <span>AWS</span>
+            <span>EKS</span>
+            <span>EC2</span>
+            <span>Lambda</span>
+            <span>S3</span>
+            <span>ECR</span>
+            <span>Terraform</span>
+            <span>GitHub Actions</span>
+            <span>Kubernetes</span>
+            <span>Helm</span>
+            <span>Docker</span>
+            <span>Trivy</span>
+            <span>Prometheus</span>
+            <span>Grafana</span>
+            <span>Python</span>
+            <span>Bash</span>
+          </div>
         </div>
       </div>
 
       <div class="experience-card">
-        <div class="experience-header">
-          <div>
-            <h3>Systems & Automation Engineer</h3>
-            <p>Tech Mahindra · Getinge Healthcare · Hyderabad, India</p>
+        <div class="experience-icon">⚙️</div>
+
+        <div class="experience-content">
+          <div class="experience-header">
+            <div>
+              <h3>Systems & Automation Engineer</h3>
+              <p>Tech Mahindra · Getinge Healthcare · Hyderabad, India</p>
+            </div>
+
+            <span>Jun 2022 – Jan 2024</span>
           </div>
 
-          <span>Jun 2022 – Jan 2024</span>
-        </div>
+          <div class="experience-block">
+            <h4>Healthcare Platform Support</h4>
+            <ul>
+              <li>Supported a healthcare service management platform used by 500+ field service engineers across multiple regions.</li>
+              <li>Handled 25 to 35 incidents and service requests per week while working within SLA expectations.</li>
+              <li>Worked with developers and DBAs during P1 incidents and contributed RCA notes and post-incident action items.</li>
+            </ul>
+          </div>
 
-        <ul>
-          <li>Supported a healthcare service management platform used by 500+ field service engineers across multiple regions.</li>
-          <li>Handled 25 to 35 incidents and service requests per week while maintaining SLA expectations.</li>
-          <li>Improved SQL query performance from 8 seconds to under 1 second on a 50K+ record platform.</li>
-          <li>Automated compliance reports and recurring data-sync jobs using Python and PowerShell, saving 8–10 hours monthly.</li>
-          <li>Maintained Linux and Windows servers, including patching, log rotation, cron jobs, and health checks.</li>
-          <li>Supported Jenkins-based release cycles and documented rollback steps for application releases.</li>
-        </ul>
+          <div class="experience-block">
+            <h4>Automation & Server Operations</h4>
+            <ul>
+              <li>Automated compliance reports and recurring data-sync jobs using Python and PowerShell, saving 8–10 hours monthly.</li>
+              <li>Administered Linux and Windows servers, including patch scheduling, log rotation, cron jobs, and health checks.</li>
+              <li>Supported Jenkins-based release cycles and documented rollback steps for application releases.</li>
+            </ul>
+          </div>
 
-        <div class="stack">
-          <span>ServiceNow</span>
-          <span>Python</span>
-          <span>PowerShell</span>
-          <span>Bash</span>
-          <span>Jenkins</span>
-          <span>Linux</span>
-          <span>Windows Server</span>
-          <span>SQL</span>
-          <span>PostgreSQL</span>
-          <span>REST APIs</span>
+          <div class="experience-block">
+            <h4>Database & API Improvements</h4>
+            <ul>
+              <li>Improved SQL query response time from 8 seconds to under 1 second on a 50K+ record healthcare platform.</li>
+              <li>Built REST API integrations between ServiceNow and internal tools to automate ticket routing.</li>
+              <li>Authored 40+ runbooks and troubleshooting guides used by first-line support teams.</li>
+            </ul>
+          </div>
+
+          <div class="stack">
+            <span>ServiceNow</span>
+            <span>Python</span>
+            <span>PowerShell</span>
+            <span>Bash</span>
+            <span>Jenkins</span>
+            <span>Linux</span>
+            <span>Windows Server</span>
+            <span>SQL</span>
+            <span>PostgreSQL</span>
+            <span>REST APIs</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section">
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
       <p class="section-label">Capability Fabric</p>
       <h2>Technical Skills</h2>
 
       <div class="skills-grid">
         <div class="skill-card">
-          <span>LANE 01</span>
+          <div class="skill-top">
+            <span>Lane 01</span>
+            <strong>94 Ready</strong>
+          </div>
+
           <h3>Cloud Infrastructure</h3>
-          <p>AWS cloud services used for scalable, secure, and production-ready application infrastructure.</p>
+          <p>AWS cloud services for scalable, secure, and production-ready application infrastructure.</p>
+
+          <div class="meter"><span style="width: 94%;"></span></div>
 
           <div class="stack">
             <span>EC2</span>
@@ -280,14 +375,19 @@
             <span>API Gateway</span>
             <span>CloudWatch</span>
             <span>ECR</span>
-            <span>Cognito</span>
           </div>
         </div>
 
         <div class="skill-card">
-          <span>LANE 02</span>
+          <div class="skill-top">
+            <span>Lane 02</span>
+            <strong>92 Ready</strong>
+          </div>
+
           <h3>Platform Engineering</h3>
           <p>Container orchestration, Helm releases, GitOps workflows, and Kubernetes workload management.</p>
+
+          <div class="meter"><span style="width: 92%;"></span></div>
 
           <div class="stack">
             <span>Docker</span>
@@ -300,16 +400,21 @@
         </div>
 
         <div class="skill-card">
-          <span>LANE 03</span>
+          <div class="skill-top">
+            <span>Lane 03</span>
+            <strong>90 Ready</strong>
+          </div>
+
           <h3>CI/CD & Automation</h3>
-          <p>Reliable build, test, scan, and deployment workflows with scripting and infrastructure automation.</p>
+          <p>Build, test, scan, deploy, and automate workflows using modern DevOps tooling.</p>
+
+          <div class="meter"><span style="width: 90%;"></span></div>
 
           <div class="stack">
             <span>GitHub Actions</span>
             <span>Jenkins</span>
             <span>GitLab CI</span>
             <span>Terraform</span>
-            <span>CloudFormation</span>
             <span>Ansible</span>
             <span>Python</span>
             <span>Bash</span>
@@ -318,9 +423,15 @@
         </div>
 
         <div class="skill-card">
-          <span>LANE 04</span>
+          <div class="skill-top">
+            <span>Lane 04</span>
+            <strong>88 Ready</strong>
+          </div>
+
           <h3>Security & Observability</h3>
-          <p>Security scanning, monitoring, alerting, dashboards, and production troubleshooting support.</p>
+          <p>Security scanning, monitoring dashboards, alerting, and production troubleshooting.</p>
+
+          <div class="meter"><span style="width: 88%;"></span></div>
 
           <div class="stack">
             <span>Trivy</span>
@@ -335,9 +446,15 @@
         </div>
 
         <div class="skill-card">
-          <span>LANE 05</span>
+          <div class="skill-top">
+            <span>Lane 05</span>
+            <strong>84 Ready</strong>
+          </div>
+
           <h3>Databases & Messaging</h3>
-          <p>Database support, query optimization, indexing, and event-driven platform exposure.</p>
+          <p>Database support, SQL optimization, indexing, and event-driven platform exposure.</p>
+
+          <div class="meter"><span style="width: 84%;"></span></div>
 
           <div class="stack">
             <span>PostgreSQL</span>
@@ -350,9 +467,15 @@
         </div>
 
         <div class="skill-card">
-          <span>LANE 06</span>
+          <div class="skill-top">
+            <span>Lane 06</span>
+            <strong>86 Ready</strong>
+          </div>
+
           <h3>Tools & Operations</h3>
           <p>Operational support, ticketing, collaboration, source control, and workflow management.</p>
+
+          <div class="meter"><span style="width: 86%;"></span></div>
 
           <div class="stack">
             <span>Linux</span>
@@ -366,19 +489,49 @@
       </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="section">
+    <!-- REQUEST FLOW -->
+    <section class="section reveal">
+      <p class="section-label">Request Flow</p>
+      <h2>Cloud Infrastructure Path</h2>
+
+      <p class="section-description">
+        Traffic is modeled as it moves from the internet edge into AWS services, containers,
+        Kubernetes workloads, monitoring, and security gates.
+      </p>
+
+      <div class="infra-flow">
+        <div>Internet</div>
+        <span></span>
+        <div>API Gateway</div>
+        <span></span>
+        <div>Lambda / EKS</div>
+        <span></span>
+        <div>Kubernetes Pods</div>
+        <span></span>
+        <div>CloudWatch</div>
+        <span></span>
+        <div>Grafana</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
       <p class="section-label">Project Surface</p>
       <h2>Key Projects</h2>
 
       <div class="projects-grid">
-        <div class="project-card">
-          <p class="project-type">Platform · AWS</p>
+        <div class="project-card featured">
+          <p class="project-type">Featured · AWS Platform</p>
           <h3>AWS Kubernetes Microservices Platform</h3>
           <p>
             Supported AWS and Kubernetes environments running 20 to 30 microservices across
-            dev, UAT, and production with strong release reliability and platform monitoring.
+            dev, UAT, and production with platform monitoring and reliable release support.
           </p>
+
+          <div class="project-metrics">
+            <span>99.6% uptime</span>
+            <span>20–30 services</span>
+          </div>
 
           <div class="stack">
             <span>AWS</span>
@@ -395,6 +548,11 @@
             Built Terraform modules for VPC, EKS, IAM, and S3, reducing manual provisioning
             from 3–4 hours to under 15 minutes.
           </p>
+
+          <div class="project-metrics">
+            <span>Under 15 mins</span>
+            <span>Reusable IaC</span>
+          </div>
 
           <div class="stack">
             <span>Terraform</span>
@@ -413,6 +571,11 @@
             and Kubernetes rolling deployments.
           </p>
 
+          <div class="project-metrics">
+            <span>15–20 releases/mo</span>
+            <span>Trivy gated</span>
+          </div>
+
           <div class="stack">
             <span>GitHub Actions</span>
             <span>Docker</span>
@@ -428,6 +591,11 @@
             Built Prometheus and Grafana dashboards for latency, error rate, pod health,
             and faster incident detection.
           </p>
+
+          <div class="project-metrics">
+            <span>MTTD under 6 mins</span>
+            <span>CloudWatch alerts</span>
+          </div>
 
           <div class="stack">
             <span>Prometheus</span>
@@ -445,6 +613,11 @@
             saving 8 to 10 hours of manual effort each month.
           </p>
 
+          <div class="project-metrics">
+            <span>8–10 hrs saved/mo</span>
+            <span>Workflow automation</span>
+          </div>
+
           <div class="stack">
             <span>Python</span>
             <span>PowerShell</span>
@@ -461,6 +634,11 @@
             healthcare platform.
           </p>
 
+          <div class="project-metrics">
+            <span>8s → &lt;1s</span>
+            <span>50K+ records</span>
+          </div>
+
           <div class="stack">
             <span>SQL</span>
             <span>PostgreSQL</span>
@@ -471,67 +649,100 @@
       </div>
     </section>
 
-    <!-- CREDENTIALS SECTION -->
-    <section id="credentials" class="section">
+    <!-- CREDENTIALS -->
+    <section id="credentials" class="section reveal">
       <p class="section-label">Proof of Work</p>
-      <h2>Credentials & Education</h2>
+      <h2>Credentials</h2>
 
       <div class="credentials-grid">
         <div class="credential-card">
+          <span class="credential-badge">AWS</span>
           <h3>AWS Certified DevOps Engineer</h3>
           <p>Professional</p>
         </div>
 
         <div class="credential-card">
+          <span class="credential-badge">CKA</span>
           <h3>Certified Kubernetes Administrator</h3>
-          <p>CKA</p>
+          <p>Kubernetes certification focused on cluster operations and administration.</p>
         </div>
 
         <div class="credential-card">
+          <span class="credential-badge">HCL</span>
           <h3>HashiCorp Certified</h3>
           <p>Terraform Associate</p>
-        </div>
-
-        <div class="credential-card">
-          <h3>MS in Information Science</h3>
-          <p>University at Albany · GPA 3.5/4.0</p>
-        </div>
-
-        <div class="credential-card">
-          <h3>B.Tech Computer Science</h3>
-          <p>GITAM University · India</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section contact-section">
+    <!-- EDUCATION -->
+    <section id="education" class="section reveal">
+      <p class="section-label">Academic Foundation</p>
+      <h2>Education</h2>
+
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="edu-year">Dec 2025</div>
+          <h3>Master of Science in Information Science</h3>
+          <p>University at Albany, State University of New York</p>
+          <span>GPA: 3.5/4.0</span>
+        </div>
+
+        <div class="education-card">
+          <div class="edu-year">May 2023</div>
+          <h3>Bachelor of Technology in Computer Science & Engineering</h3>
+          <p>GITAM University, India</p>
+          <span>Computer Science Foundation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section reveal">
       <p class="section-label">Recruiter-Ready Communication Channel</p>
       <h2>Get in Touch</h2>
 
       <div class="contact-card">
-        <div>
-          <p class="card-label">Contact Metadata</p>
-          <h3>Devi Sharanya Pasala</h3>
-          <p>Albany, NY · Open to Relocate</p>
+        <div class="contact-left">
+          <p class="card-label">Secure Channel</p>
+          <h3>Contact Metadata</h3>
+          <p>
+            Open to DevOps Engineer, Cloud Engineer, Site Reliability Engineer,
+            and Platform Engineering roles.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:devisharanyap@gmail.com">✉ devisharanyap@gmail.com</a>
+            <a href="tel:+15185919702">☎ 518-591-9702</a>
+            <a href="https://www.linkedin.com/in/devisharanya/" target="_blank">↗ LinkedIn</a>
+            <a href="https://github.com/DeviSharanyaPasala" target="_blank">↗ GitHub</a>
+          </div>
         </div>
 
-        <div class="contact-links">
-          <a href="mailto:devisharanyap@gmail.com">devisharanyap@gmail.com</a>
-          <a href="tel:+15185919702">518-591-9702</a>
-          <a href="https://www.linkedin.com/in/devisharanya/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/DeviSharanyaPasala" target="_blank">GitHub</a>
-        </div>
+        <form class="contact-form" id="contactForm">
+          <label>
+            Name
+            <input type="text" id="name" placeholder="Your name" />
+          </label>
 
-        <p class="availability">
-          Open to DevOps Engineer, Cloud Engineer, Site Reliability Engineer, and Platform Engineering roles.
-        </p>
+          <label>
+            Email
+            <input type="email" id="email" placeholder="your.email@example.com" />
+          </label>
+
+          <label>
+            Message
+            <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+          </label>
+
+          <button type="submit">↗ Transmit Message</button>
+        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Devi Sharanya Pasala · DevOps Engineer</p>
+    <p>© 2026 Devi Sharanya Pasala · DevOps Engineer · Albany, NY</p>
   </footer>
 
   <script src="script.js"></script>
