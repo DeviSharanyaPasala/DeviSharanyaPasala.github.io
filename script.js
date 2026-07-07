@@ -1,12 +1,6 @@
-const animatedElements = document.querySelectorAll(
-  ".section, .experience-card, .skill-card, .project-card, .credential-card"
-);
+const revealElements = document.querySelectorAll(".reveal");
 
-animatedElements.forEach((element) => {
-  element.classList.add("reveal");
-});
-
-const observer = new IntersectionObserver(
+const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -15,8 +9,34 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.12,
+    threshold: 0.14,
   }
 );
 
-animatedElements.forEach((element) => observer.observe(element));
+revealElements.forEach((element) => revealObserver.observe(element));
+
+const cursorGlow = document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove", (event) => {
+  if (!cursorGlow) return;
+
+  cursorGlow.style.left = `${event.clientX}px`;
+  cursorGlow.style.top = `${event.clientY}px`;
+});
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const subject = encodeURIComponent("Portfolio Contact - DevOps Opportunity");
+  const body = encodeURIComponent(
+    `Hi Devi,\n\n${message}\n\nName: ${name}\nEmail: ${email}`
+  );
+
+  window.location.href = `mailto:devisharanyap@gmail.com?subject=${subject}&body=${body}`;
+});
