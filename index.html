@@ -1,472 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devi Sharanya Pasala — DevOps & MLOps Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-
-:root {
-  --ink:     #0d0d0d;
-  --ink-2:   #2a2a2a;
-  --ink-3:   #5a5a5a;
-  --paper:   #f5f2ed;
-  --paper-2: #ede9e1;
-  --rule:    #d4cec4;
-  --gold:    #b8933a;
-  --gold-lt: #d4a84b;
-  --white:   #ffffff;
-  --navy:    #0e1c35;
-}
-
-body { font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); overflow-x:hidden; }
-
-#cursor { width:10px; height:10px; border-radius:50%; background:var(--gold); position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s,height .2s,background .2s; mix-blend-mode:multiply; }
-#cursor.lg { width:38px; height:38px; background:rgba(184,147,58,.25); }
-*,a,button { cursor:none !important; }
-
-nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:0 5%; height:60px; background:rgba(245,242,237,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); }
-.nav-logo { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--ink); text-decoration:none; }
-.nav-links { display:flex; gap:2.5rem; list-style:none; }
-.nav-links a { font-size:.76rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); text-decoration:none; transition:color .2s; }
-.nav-links a:hover,.nav-links a.active { color:var(--gold); }
-
-#hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding:0 5%; padding-top:60px; overflow:hidden; position:relative; }
-.hero-left { display:flex; flex-direction:column; justify-content:center; padding-right:4rem; position:relative; z-index:2; }
-.hero-tag { font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.15em; color:var(--gold); text-transform:uppercase; margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; opacity:0; animation:up .7s ease forwards .2s; }
-.hero-tag::before { content:''; width:32px; height:1px; background:var(--gold); }
-.hero-name { font-family:'DM Serif Display',serif; font-size:clamp(3rem,5.5vw,5.5rem); line-height:1.0; color:var(--ink); margin-bottom:.5rem; opacity:0; animation:up .7s ease forwards .4s; }
-.hero-name em { font-style:italic; color:var(--gold); }
-.hero-sub { font-size:.95rem; color:var(--ink-3); font-weight:300; letter-spacing:.04em; margin-bottom:2.5rem; opacity:0; animation:up .7s ease forwards .6s; }
-.hero-desc { font-size:.95rem; color:var(--ink-2); line-height:1.9; max-width:440px; margin-bottom:2.5rem; opacity:0; animation:up .7s ease forwards .8s; }
-.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:up .7s ease forwards 1s; }
-.btn { font-family:'DM Sans',sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:.75rem 1.8rem; text-decoration:none; transition:all .25s; display:inline-block; }
-.btn-solid { background:var(--ink); color:var(--paper); border:1.5px solid var(--ink); }
-.btn-solid:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
-.btn-outline { background:transparent; color:var(--ink); border:1.5px solid var(--ink-3); }
-.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
-
-.hero-right { display:flex; align-items:center; justify-content:center; opacity:0; animation:fadeIn 1s ease forwards .6s; }
-.hero-graphic { width:min(400px,90%); aspect-ratio:1; position:relative; }
-.ring { position:absolute; inset:0; border-radius:50%; border:1px solid var(--rule); animation:spin 30s linear infinite; }
-.ring:nth-child(2) { inset:9%; border-style:dashed; animation-direction:reverse; animation-duration:20s; }
-.ring:nth-child(3) { inset:19%; animation-duration:15s; }
-.hcenter { position:absolute; inset:30%; border-radius:50%; background:var(--navy); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.3rem; }
-.hct { font-family:'DM Mono',monospace; font-size:.55rem; letter-spacing:.08em; color:rgba(255,255,255,.55); text-align:center; line-height:1.7; }
-.hct strong { color:var(--gold-lt); display:block; font-size:.68rem; }
-.olabel { position:absolute; font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.05em; color:var(--ink-3); white-space:nowrap; background:var(--paper); padding:.2rem .5rem; border:1px solid var(--rule); transform:translate(-50%,-50%); }
-
-section { padding:6rem 5%; }
-.sec-label { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; display:flex; align-items:center; gap:.6rem; }
-.sec-label::after { content:''; height:1px; width:32px; background:var(--gold); }
-.sec-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,3.5vw,3rem); color:var(--ink); line-height:1.15; margin-bottom:.5rem; }
-.sec-title em { font-style:italic; color:var(--gold); }
-
-#about { background:var(--white); }
-.about-wrap { display:grid; grid-template-columns:3fr 2fr; gap:5rem; margin-top:3rem; align-items:start; }
-.about-body p { font-size:1rem; color:var(--ink-2); line-height:1.9; margin-bottom:1.25rem; }
-.stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); margin-top:2.5rem; border:1px solid var(--rule); }
-.stat { background:var(--white); padding:1.5rem; text-align:center; }
-.stat-n { font-family:'DM Serif Display',serif; font-size:2.2rem; color:var(--ink); line-height:1; margin-bottom:.3rem; }
-.stat-n span { color:var(--gold); }
-.stat-l { font-size:.72rem; color:var(--ink-3); letter-spacing:.06em; text-transform:uppercase; }
-.about-side h3 { font-family:'DM Serif Display',serif; font-size:1.2rem; color:var(--ink); margin-bottom:1.25rem; }
-.check-list { list-style:none; display:flex; flex-direction:column; gap:.65rem; }
-.check-list li { display:flex; gap:.75rem; align-items:flex-start; font-size:.9rem; color:var(--ink-2); line-height:1.5; }
-.check-list li::before { content:'✓'; color:var(--gold); font-weight:600; flex-shrink:0; }
-.edu-cards { margin-top:2rem; display:flex; flex-direction:column; gap:.75rem; }
-.edu-card { padding:1rem 1.25rem; border-left:3px solid var(--gold); background:var(--paper); }
-.edu-deg { font-weight:600; font-size:.9rem; color:var(--ink); }
-.edu-school { font-size:.8rem; color:var(--ink-3); margin-top:.15rem; }
-.edu-yr { font-family:'DM Mono',monospace; font-size:.72rem; color:var(--gold); margin-top:.15rem; }
-
-#skills { background:var(--paper); }
-.skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); margin-top:3rem; border:1px solid var(--rule); }
-.skill-card { background:var(--paper); padding:1.75rem 1.5rem; transition:background .2s; position:relative; overflow:hidden; }
-.skill-card::after { content:''; position:absolute; bottom:0; left:0; height:2px; width:0; background:var(--gold); transition:width .3s ease; }
-.skill-card:hover { background:var(--white); }
-.skill-card:hover::after { width:100%; }
-.skill-icon { font-size:1.4rem; margin-bottom:.75rem; }
-.skill-name { font-family:'DM Serif Display',serif; font-size:1rem; color:var(--ink); margin-bottom:.75rem; }
-.skill-chips { display:flex; flex-wrap:wrap; gap:.4rem; }
-.chip { font-family:'DM Mono',monospace; font-size:.65rem; padding:.25rem .6rem; background:var(--paper-2); color:var(--ink-2); border:1px solid var(--rule); letter-spacing:.03em; }
-.chip.hot { background:rgba(184,147,58,.12); border-color:rgba(184,147,58,.4); color:var(--gold); }
-
-#experience { background:var(--navy); }
-#experience .sec-title { color:var(--white); }
-#experience .sec-label { color:var(--gold-lt); }
-#experience .sec-label::after { background:var(--gold-lt); }
-.exp-list { margin-top:3rem; position:relative; padding-left:0; }
-.exp-list::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:rgba(255,255,255,.1); }
-.exp-item { padding:0 0 3rem 2.5rem; position:relative; }
-.exp-item::before { content:''; position:absolute; left:-4px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 3px rgba(184,147,58,.2); }
-.exp-period { font-family:'DM Mono',monospace; font-size:.7rem; color:var(--gold-lt); letter-spacing:.1em; margin-bottom:.35rem; }
-.exp-role { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--white); margin-bottom:.15rem; }
-.exp-co { font-size:.85rem; color:rgba(255,255,255,.4); font-style:italic; margin-bottom:1rem; }
-.exp-pts { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
-.exp-pts li { font-size:.88rem; color:rgba(255,255,255,.6); line-height:1.75; padding-left:1rem; position:relative; }
-.exp-pts li::before { content:''; position:absolute; left:0; color:var(--gold); font-size:.75rem; }
-
-#projects { background:var(--paper-2); }
-.proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:3rem; }
-.proj-card { background:var(--white); border:1px solid var(--rule); overflow:hidden; transition:transform .25s,box-shadow .25s; }
-.proj-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.08); }
-.proj-top { background:var(--navy); padding:2rem; position:relative; overflow:hidden; }
-.proj-num { font-family:'DM Serif Display',serif; font-size:4rem; color:rgba(255,255,255,.05); position:absolute; right:1.25rem; top:.5rem; line-height:1; }
-.proj-title { font-family:'DM Serif Display',serif; font-size:1.15rem; color:var(--white); margin-bottom:.5rem; position:relative; z-index:1; }
-.proj-stack { font-family:'DM Mono',monospace; font-size:.68rem; color:var(--gold-lt); letter-spacing:.05em; position:relative; z-index:1; }
-.proj-body { padding:1.75rem; }
-.proj-desc { font-size:.9rem; color:var(--ink-2); line-height:1.8; margin-bottom:1.25rem; }
-.proj-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
-.proj-link { display:inline-block; margin-top:1rem; font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--gold); text-decoration:none; text-transform:uppercase; }
-.proj-link:hover { color:var(--gold-lt); }
-
-#contact { background:var(--white); text-align:center; }
-.contact-inner { max-width:580px; margin:0 auto; }
-.contact-inner .sec-label { justify-content:center; }
-.contact-inner .sec-label::after { display:none; }
-.contact-sub { font-size:1rem; color:var(--ink-3); line-height:1.9; margin:1rem 0 3rem; }
-.contact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:2.5rem; }
-.contact-item { background:var(--white); padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:.4rem; text-decoration:none; transition:background .2s; }
-.contact-item:hover { background:var(--paper); }
-.ci-icon { font-size:1.3rem; }
-.ci-label { font-family:'DM Mono',monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
-.ci-val { font-size:.85rem; color:var(--ink); font-weight:500; }
-.footer-note { font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--rule); padding-top:2rem; border-top:1px solid var(--rule); }
-
-@keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-.reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
-.reveal.vis { opacity:1; transform:translateY(0); }
-
-@media(max-width:960px) {
-  #hero { grid-template-columns:1fr; }
-  .hero-right { display:none; }
-  .about-wrap { grid-template-columns:1fr; gap:2.5rem; }
-  .skills-grid { grid-template-columns:repeat(2,1fr); }
-  .proj-grid { grid-template-columns:1fr; }
-  .contact-grid { grid-template-columns:1fr; }
-}
-@media(max-width:600px) {
-  .nav-links { display:none; }
-  .skills-grid { grid-template-columns:1fr; }
-  .stats-row { grid-template-columns:1fr; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devi Sharanya Pasala | DevOps Engineer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <header class="navbar">
+    <div class="logo">DSP</div>
 
-<div id="cursor"></div>
+    <nav>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<nav>
-  <a class="nav-logo" href="#hero">DSP</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">✦ Infrastructure Command Center</p>
 
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-tag">DevOps Engineer · MLOps</div>
-    <h1 class="hero-name">Devi<br>Sharanya<br><em>Pasala</em></h1>
-    <p class="hero-sub">Cloud Infrastructure · Kubernetes · CI/CD · ML Pipelines</p>
-    <p class="hero-desc">I build and maintain cloud infrastructure on AWS, from setting up Kubernetes clusters to getting ML models into production. I like systems that are simple, predictable, and easy to debug at 2am.</p>
-    <div class="hero-btns">
-      <a class="btn btn-solid" href="#projects">View Projects</a>
-      <a class="btn btn-outline" href="#contact">Get in Touch</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-graphic" id="hg">
-      <div class="ring"></div>
-      <div class="ring"></div>
-      <div class="ring"></div>
-      <div class="hcenter">
-        <div class="hct"><strong>DevOps</strong>+<strong>MLOps</strong>AWS · K8s</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <h1>Devi Sharanya<br />Pasala</h1>
 
-<section id="about">
-  <div class="sec-label">01 · About</div>
-  <h2 class="sec-title">A little about <em>me</em></h2>
-  <div class="about-wrap">
-    <div class="about-body reveal">
-      <p>I'm a DevOps and MLOps engineer based in Albany, NY. I finished my M.S. in Information Science at the University at Albany in December 2025 and I'm looking for my first full-time role in DevOps or cloud infrastructure.</p>
-      <p>Most of my hands-on experience comes from Saayam For All, a nonprofit where I volunteer as a DevOps engineer. I manage their AWS infrastructure, set up CI/CD pipelines with GitHub Actions, and handle Kubernetes deployments on EKS. It's been the best learning environment I could have asked for.</p>
-      <p>Before that I worked at Tech Mahindra as a software developer, where I automated a lot of the manual work around incident management and cleaned up some slow SQL queries that were causing real pain for the team.</p>
-      <p>I'm working toward my AWS DevOps Professional and AWS ML Specialty certifications and I'm genuinely interested in roles where DevOps and ML intersect.</p>
-      <div class="stats-row">
-        <div class="stat"><div class="stat-n"><span>30</span>%</div><div class="stat-l">Faster incident resolution</div></div>
-        <div class="stat"><div class="stat-n"><span>35</span>s</div><div class="stat-l">Full CI/CD pipeline</div></div>
-        <div class="stat"><div class="stat-n"><span>97</span>%</div><div class="stat-l">ML model accuracy</div></div>
-      </div>
-    </div>
-    <div class="about-side reveal">
-      <h3>Core strengths</h3>
-      <ul class="check-list">
-        <li>Kubernetes cluster management on AWS EKS</li>
-        <li>Infrastructure as Code with Terraform</li>
-        <li>CI/CD pipelines with GitHub Actions</li>
-        <li>ML model deployment on SageMaker</li>
-        <li>Experiment tracking with MLflow</li>
-        <li>Monitoring with Prometheus and Grafana</li>
-        <li>Serverless architecture with AWS Lambda</li>
-      </ul>
-      <div class="edu-cards">
-        <div class="edu-card">
-          <div class="edu-deg">M.S. Information Science</div>
-          <div class="edu-school">University at Albany, SUNY</div>
-          <div class="edu-yr">Dec 2025 · GPA 3.5</div>
+        <h2>DevOps Engineer | Cloud & Platform Engineering</h2>
+
+        <p class="hero-text">
+          DevOps Engineer with 3+ years of experience building reliable AWS and Kubernetes
+          platforms, automating infrastructure with Terraform, improving CI/CD delivery,
+          and supporting production systems with strong observability and security practices.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Contact Me</a>
+          <a href="#experience" class="btn secondary">View Experience</a>
+          <a href="https://www.linkedin.com/in/devisharanya/" class="btn secondary" target="_blank">LinkedIn</a>
+          <a href="https://github.com/DeviSharanyaPasala" class="btn secondary" target="_blank">GitHub</a>
         </div>
-        <div class="edu-card">
-          <div class="edu-deg">B.Tech, Computer Science and Engineering</div>
-          <div class="edu-school">GITAM University, India</div>
-          <div class="edu-yr">May 2023</div>
+
+        <div class="stats-grid">
+          <div>
+            <span>3+</span>
+            <p>Years Experience</p>
+          </div>
+
+          <div>
+            <span>20–30</span>
+            <p>Microservices</p>
+          </div>
+
+          <div>
+            <span>99.6%</span>
+            <p>Platform Uptime</p>
+          </div>
+
+          <div>
+            <span>15–20</span>
+            <p>Releases / Month</p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section id="skills">
-  <div class="sec-label">02 · Skills</div>
-  <h2 class="sec-title">Technical <em>toolkit</em></h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">☁️</div>
-      <div class="skill-name">Cloud & Infra</div>
-      <div class="skill-chips">
-        <span class="chip hot">AWS EKS</span><span class="chip">EC2</span><span class="chip">S3</span>
-        <span class="chip">Lambda</span><span class="chip">API Gateway</span><span class="chip">Cognito</span>
-        <span class="chip">CloudWatch</span><span class="chip">IAM</span><span class="chip">VPC</span><span class="chip">GCP</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🐳</div>
-      <div class="skill-name">Containers</div>
-      <div class="skill-chips">
-        <span class="chip hot">Kubernetes</span><span class="chip hot">Docker</span>
-        <span class="chip">Helm</span><span class="chip">ECR</span><span class="chip">minikube</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🔁</div>
-      <div class="skill-name">CI/CD & IaC</div>
-      <div class="skill-chips">
-        <span class="chip hot">GitHub Actions</span><span class="chip hot">Terraform</span>
-        <span class="chip">Jenkins</span><span class="chip">ArgoCD</span><span class="chip">CloudFormation</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-name">MLOps</div>
-      <div class="skill-chips">
-        <span class="chip hot">MLflow</span><span class="chip hot">SageMaker</span>
-        <span class="chip">Kubeflow</span><span class="chip">Model Versioning</span>
-        <span class="chip">Feature Stores</span><span class="chip">A/B Testing</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🧠</div>
-      <div class="skill-name">ML & AI</div>
-      <div class="skill-chips">
-        <span class="chip hot">TensorFlow</span><span class="chip">Keras</span><span class="chip">PyTorch</span>
-        <span class="chip">Scikit-learn</span><span class="chip">NLP</span><span class="chip">CNN</span><span class="chip">LSTM</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📊</div>
-      <div class="skill-name">Monitoring</div>
-      <div class="skill-chips">
-        <span class="chip hot">Prometheus</span><span class="chip hot">Grafana</span>
-        <span class="chip">CloudWatch</span><span class="chip">Alerting</span><span class="chip">Log Aggregation</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">💻</div>
-      <div class="skill-name">Languages</div>
-      <div class="skill-chips">
-        <span class="chip hot">Python</span><span class="chip">Bash</span>
-        <span class="chip">SQL</span><span class="chip">JavaScript</span><span class="chip">REST APIs</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⚙️</div>
-      <div class="skill-name">Tools & Practices</div>
-      <div class="skill-chips">
-        <span class="chip">Apache Kafka</span><span class="chip">Git</span>
-        <span class="chip">Linux</span><span class="chip">Jira</span>
-        <span class="chip">Agile/Scrum</span><span class="chip">Spring Boot 3</span>
-      </div>
-    </div>
-  </div>
-</section>
+      <aside class="identity-card">
+        <div class="status-dot"></div>
 
-<section id="experience">
-  <div class="sec-label">03 · Experience</div>
-  <h2 class="sec-title" style="color:var(--white)">Where I've <em>worked</em></h2>
-  <div class="exp-list">
-    <div class="exp-item reveal">
-      <div class="exp-period">Oct 2025 — Present</div>
-      <div class="exp-role">DevOps and Full-Stack Engineer</div>
-      <div class="exp-co">Saayam For All · Volunteer · Remote</div>
-      <ul class="exp-pts">
-        <li>Own the full AWS infrastructure for a live nonprofit platform, including EKS cluster management, rolling deployments, autoscaling, and pod health monitoring.</li>
-        <li>Set up CloudWatch alarms across the serverless stack (API Gateway, Lambda, Cognito, S3) that brought incident detection time down from a few hours to under 5 minutes.</li>
-        <li>Built a GitHub Actions pipeline that runs tests, builds a Docker image, pushes it to ECR, and deploys to EKS via Helm on every merge to main, all in under 4 minutes.</li>
-      </ul>
-    </div>
-    <div class="exp-item reveal">
-      <div class="exp-period">Jun 2023 — Jan 2024</div>
-      <div class="exp-role">Software Developer</div>
-      <div class="exp-co">Tech Mahindra · Hyderabad, India</div>
-      <ul class="exp-pts">
-        <li>Automated repetitive incident management tasks in ServiceNow using REST APIs, which cut the time spent per ticket by about 30%.</li>
-        <li>Rewrote several slow database queries with better joins and indexes, bringing average response times down from 8 seconds to under 1 second.</li>
-      </ul>
-    </div>
-    <div class="exp-item reveal">
-      <div class="exp-period">May 2022 — Aug 2022</div>
-      <div class="exp-role">Web Development Intern</div>
-      <div class="exp-co">LetsGrowMore · Remote</div>
-      <ul class="exp-pts">
-        <li>Built responsive web pages with HTML, CSS, and JavaScript and helped create a shared component library that made the UI more consistent across multiple projects.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+        <p class="card-label">Operator Identity</p>
+        <h3>Devi Sharanya Pasala</h3>
+        <p>Albany, NY · Open to Relocate</p>
 
-<section id="projects">
-  <div class="sec-label">04 · Projects</div>
-  <h2 class="sec-title">Things I've <em>built</em></h2>
-  <div class="proj-grid">
-    <div class="proj-card reveal">
-      <div class="proj-top">
-        <div class="proj-num">01</div>
-        <div class="proj-title">Zero-Downtime CI/CD Pipeline</div>
-        <div class="proj-stack">GitHub Actions · Docker · AWS EKS · Helm · Terraform</div>
-      </div>
-      <div class="proj-body">
-        <p class="proj-desc">I provisioned an EKS cluster and ECR registry on AWS using Terraform, containerized a Flask app with Docker, and wrote Helm charts to deploy it to Kubernetes with rolling updates so there's zero downtime on each release. The GitHub Actions pipeline runs tests, builds the image, and deploys to EKS in under 35 seconds on every push to main.</p>
-        <div class="proj-tags"><span class="chip hot">EKS</span><span class="chip">Helm</span><span class="chip">Terraform</span><span class="chip">GitHub Actions</span><span class="chip">Docker</span></div>
-        <a class="proj-link" href="https://github.com/DeviSharanyaPasala/Zero-Downtime-CICD-Pipeline" target="_blank">View on GitHub →</a>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-top">
-        <div class="proj-num">02</div>
-        <div class="proj-title">ML CI/CD Pipeline — Breast Cancer Detection</div>
-        <div class="proj-stack">TensorFlow · Docker · MLflow · GitHub Actions · Flask</div>
-      </div>
-      <div class="proj-body">
-        <p class="proj-desc">Trained a DenseNet121 model on mammogram images achieving 97% accuracy on the CBIS-DDSM dataset. Built a Flask REST API to serve predictions, tracked experiments with MLflow, containerized with Docker, and automated testing and validation with a 3-stage GitHub Actions pipeline.</p>
-        <div class="proj-tags"><span class="chip hot">MLOps</span><span class="chip">DenseNet121</span><span class="chip">MLflow</span><span class="chip">Flask</span><span class="chip">97% Accuracy</span></div>
-        <a class="proj-link" href="https://github.com/DeviSharanyaPasala/Breast-Cancer-Detection" target="_blank">View on GitHub →</a>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-top">
-        <div class="proj-num">03</div>
-        <div class="proj-title">Cloud Monitor with Auto-Remediation</div>
-        <div class="proj-stack">AWS Lambda · CloudWatch · SNS · Python · Terraform</div>
-      </div>
-      <div class="proj-body">
-        <p class="proj-desc">A serverless monitoring setup that watches EC2 and ECS health metrics, automatically restarts unhealthy containers using Lambda, and sends Slack and email alerts with enough context to actually be useful. The whole infrastructure is defined in Terraform.</p>
-        <div class="proj-tags"><span class="chip hot">Serverless</span><span class="chip">Auto-Heal</span><span class="chip">CloudWatch</span><span class="chip">SNS</span><span class="chip">IaC</span></div>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-top">
-        <div class="proj-num">04</div>
-        <div class="proj-title">Kafka Log Aggregation and Anomaly Detection</div>
-        <div class="proj-stack">Apache Kafka · Python · PostgreSQL · Grafana · Docker</div>
-      </div>
-      <div class="proj-body">
-        <p class="proj-desc">A streaming pipeline that processes around 10,000 log events per minute through Kafka into PostgreSQL. A rule-based detector flags error spikes and latency outliers and surfaces them in Grafana. It caught two real bugs during testing that would have been invisible in raw log files.</p>
-        <div class="proj-tags"><span class="chip hot">Kafka</span><span class="chip">Streaming</span><span class="chip">Grafana</span><span class="chip">Anomaly Detection</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="identity-row">
+          <span>Availability</span>
+          <strong>Open</strong>
+        </div>
 
-<section id="contact">
-  <div class="contact-inner">
-    <div class="sec-label" style="justify-content:center;">05 · Contact</div>
-    <h2 class="sec-title">Let's <em>connect</em></h2>
-    <p class="contact-sub">I'm looking for DevOps, MLOps, and cloud infrastructure roles. I reply to every message, usually the same day.</p>
-    <div class="contact-grid">
-      <a class="contact-item" href="mailto:devisharanyap@gmail.com">
-        <div class="ci-icon">✉️</div>
-        <div class="ci-label">Email</div>
-        <div class="ci-val">devisharanyap@gmail.com</div>
-      </a>
-      <a class="contact-item" href="tel:5185919702">
-        <div class="ci-icon">📞</div>
-        <div class="ci-label">Phone</div>
-        <div class="ci-val">518-591-9702</div>
-      </a>
-      <a class="contact-item" href="https://linkedin.com/in/devisharanya" target="_blank">
-        <div class="ci-icon">💼</div>
-        <div class="ci-label">LinkedIn</div>
-        <div class="ci-val">linkedin.com/in/devisharanya</div>
-      </a>
-      <a class="contact-item" href="https://github.com/DeviSharanyaPasala" target="_blank">
-        <div class="ci-icon">⌨️</div>
-        <div class="ci-label">GitHub</div>
-        <div class="ci-val">github.com/DeviSharanyaPasala</div>
-      </a>
-    </div>
-    <div class="footer-note">DEVI SHARANYA PASALA · DEVOPS ENGINEER · MLOPS · ALBANY, NY · 2025</div>
-  </div>
-</section>
+        <div class="identity-row">
+          <span>Primary Cloud</span>
+          <strong>AWS</strong>
+        </div>
 
-<script>
-const cur = document.getElementById('cursor');
-document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
-document.querySelectorAll('a,button').forEach(el => {
-  el.addEventListener('mouseenter', () => cur.classList.add('lg'));
-  el.addEventListener('mouseleave', () => cur.classList.remove('lg'));
-});
+        <div class="identity-row">
+          <span>Platform</span>
+          <strong>Kubernetes</strong>
+        </div>
 
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('vis'),i*90); obs.unobserve(e.target); } });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        <div class="identity-row">
+          <span>Infrastructure</span>
+          <strong>Terraform</strong>
+        </div>
 
-const secs = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let active = '';
-  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 100) active = s.id; });
-  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+active));
-});
+        <div class="tag-cloud">
+          <span>AWS</span>
+          <span>EKS</span>
+          <span>Terraform</span>
+          <span>GitHub Actions</span>
+          <span>Docker</span>
+          <span>Kubernetes</span>
+          <span>Trivy</span>
+          <span>Prometheus</span>
+          <span>Grafana</span>
+        </div>
+      </aside>
+    </section>
 
-const hg = document.getElementById('hg');
-if(hg) {
-  const labels = ['AWS EKS','Terraform','MLflow','Kubernetes','SageMaker','GitHub Actions'];
-  labels.forEach((label, i) => {
-    const angle = (i / labels.length) * 2 * Math.PI - Math.PI/2;
-    const r = 47;
-    const x = 50 + r * Math.cos(angle);
-    const y = 50 + r * Math.sin(angle);
-    const el = document.createElement('div');
-    el.className = 'olabel';
-    el.textContent = label;
-    el.style.left = x + '%';
-    el.style.top  = y + '%';
-    hg.appendChild(el);
-  });
-}
-</script>
+    <!-- PIPELINE SECTION -->
+    <section id="pipeline" class="section">
+      <p class="section-label">CI/CD Flow</p>
+      <h2>Deployment Pipeline</h2>
+
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <span>01</span>
+          <h3>GitHub</h3>
+          <p>Code trigger</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>02</span>
+          <h3>Build</h3>
+          <p>Package app</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>03</span>
+          <h3>Docker</h3>
+          <p>Container image</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>04</span>
+          <h3>Trivy Scan</h3>
+          <p>Block critical CVEs</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>05</span>
+          <h3>Testing</h3>
+          <p>Validate release</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>06</span>
+          <h3>ECR</h3>
+          <p>Image registry</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>07</span>
+          <h3>Kubernetes</h3>
+          <p>Rolling deploy</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span>08</span>
+          <h3>Monitoring</h3>
+          <p>CloudWatch / Grafana</p>
+        </div>
+      </div>
+
+      <div class="signal-row">
+        <span>15–20 releases per month</span>
+        <span>Critical CVEs blocked before production</span>
+        <span>MTTD reduced from ~22 mins to under 6</span>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+      <p class="section-label">Work History</p>
+      <h2>Experience</h2>
+
+      <div class="experience-card">
+        <div class="experience-header">
+          <div>
+            <h3>DevOps & Cloud Engineer</h3>
+            <p>Barclays · Remote</p>
+          </div>
+
+          <span>May 2025 – Present</span>
+        </div>
+
+        <ul>
+          <li>Own AWS and Kubernetes environments running 20 to 30 Python microservices across dev, UAT, and production.</li>
+          <li>Maintained 99.6% uptime with zero unplanned production outages last quarter.</li>
+          <li>Built reusable Terraform modules for VPC, EKS, IAM, and S3, reducing provisioning from 3–4 hours to under 15 minutes.</li>
+          <li>Designed GitHub Actions pipelines for linting, unit testing, Docker builds, Trivy scanning, and Kubernetes rolling deployments.</li>
+          <li>Managed Helm charts, Kubernetes resource limits, autoscaling policies, and production stability improvements.</li>
+          <li>Built Prometheus and Grafana dashboards for latency, error rate, pod health, and CloudWatch-based incident alerts.</li>
+        </ul>
+
+        <div class="stack">
+          <span>AWS</span>
+          <span>EKS</span>
+          <span>EC2</span>
+          <span>Lambda</span>
+          <span>S3</span>
+          <span>ECR</span>
+          <span>Terraform</span>
+          <span>GitHub Actions</span>
+          <span>Kubernetes</span>
+          <span>Helm</span>
+          <span>Docker</span>
+          <span>Trivy</span>
+          <span>Prometheus</span>
+          <span>Grafana</span>
+        </div>
+      </div>
+
+      <div class="experience-card">
+        <div class="experience-header">
+          <div>
+            <h3>Systems & Automation Engineer</h3>
+            <p>Tech Mahindra · Getinge Healthcare · Hyderabad, India</p>
+          </div>
+
+          <span>Jun 2022 – Jan 2024</span>
+        </div>
+
+        <ul>
+          <li>Supported a healthcare service management platform used by 500+ field service engineers across multiple regions.</li>
+          <li>Handled 25 to 35 incidents and service requests per week while maintaining SLA expectations.</li>
+          <li>Improved SQL query performance from 8 seconds to under 1 second on a 50K+ record platform.</li>
+          <li>Automated compliance reports and recurring data-sync jobs using Python and PowerShell, saving 8–10 hours monthly.</li>
+          <li>Maintained Linux and Windows servers, including patching, log rotation, cron jobs, and health checks.</li>
+          <li>Supported Jenkins-based release cycles and documented rollback steps for application releases.</li>
+        </ul>
+
+        <div class="stack">
+          <span>ServiceNow</span>
+          <span>Python</span>
+          <span>PowerShell</span>
+          <span>Bash</span>
+          <span>Jenkins</span>
+          <span>Linux</span>
+          <span>Windows Server</span>
+          <span>SQL</span>
+          <span>PostgreSQL</span>
+          <span>REST APIs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <p class="section-label">Capability Fabric</p>
+      <h2>Technical Skills</h2>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span>LANE 01</span>
+          <h3>Cloud Infrastructure</h3>
+          <p>AWS cloud services used for scalable, secure, and production-ready application infrastructure.</p>
+
+          <div class="stack">
+            <span>EC2</span>
+            <span>EKS</span>
+            <span>S3</span>
+            <span>Lambda</span>
+            <span>IAM</span>
+            <span>VPC</span>
+            <span>API Gateway</span>
+            <span>CloudWatch</span>
+            <span>ECR</span>
+            <span>Cognito</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span>LANE 02</span>
+          <h3>Platform Engineering</h3>
+          <p>Container orchestration, Helm releases, GitOps workflows, and Kubernetes workload management.</p>
+
+          <div class="stack">
+            <span>Docker</span>
+            <span>Kubernetes</span>
+            <span>Helm</span>
+            <span>ArgoCD</span>
+            <span>EKS</span>
+            <span>GKE</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span>LANE 03</span>
+          <h3>CI/CD & Automation</h3>
+          <p>Reliable build, test, scan, and deployment workflows with scripting and infrastructure automation.</p>
+
+          <div class="stack">
+            <span>GitHub Actions</span>
+            <span>Jenkins</span>
+            <span>GitLab CI</span>
+            <span>Terraform</span>
+            <span>CloudFormation</span>
+            <span>Ansible</span>
+            <span>Python</span>
+            <span>Bash</span>
+            <span>PowerShell</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span>LANE 04</span>
+          <h3>Security & Observability</h3>
+          <p>Security scanning, monitoring, alerting, dashboards, and production troubleshooting support.</p>
+
+          <div class="stack">
+            <span>Trivy</span>
+            <span>Prometheus</span>
+            <span>Grafana</span>
+            <span>CloudWatch</span>
+            <span>ELK Stack</span>
+            <span>Datadog</span>
+            <span>TLS/SSL</span>
+            <span>IAM Hardening</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span>LANE 05</span>
+          <h3>Databases & Messaging</h3>
+          <p>Database support, query optimization, indexing, and event-driven platform exposure.</p>
+
+          <div class="stack">
+            <span>PostgreSQL</span>
+            <span>MySQL</span>
+            <span>MongoDB</span>
+            <span>Redis</span>
+            <span>Apache Kafka</span>
+            <span>SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span>LANE 06</span>
+          <h3>Tools & Operations</h3>
+          <p>Operational support, ticketing, collaboration, source control, and workflow management.</p>
+
+          <div class="stack">
+            <span>Linux</span>
+            <span>ServiceNow</span>
+            <span>Jira</span>
+            <span>Git</span>
+            <span>Apache Airflow</span>
+            <span>MLflow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <p class="section-label">Project Surface</p>
+      <h2>Key Projects</h2>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <p class="project-type">Platform · AWS</p>
+          <h3>AWS Kubernetes Microservices Platform</h3>
+          <p>
+            Supported AWS and Kubernetes environments running 20 to 30 microservices across
+            dev, UAT, and production with strong release reliability and platform monitoring.
+          </p>
+
+          <div class="stack">
+            <span>AWS</span>
+            <span>EKS</span>
+            <span>Kubernetes</span>
+            <span>Helm</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-type">Infrastructure · Terraform</p>
+          <h3>Reusable Terraform Modules</h3>
+          <p>
+            Built Terraform modules for VPC, EKS, IAM, and S3, reducing manual provisioning
+            from 3–4 hours to under 15 minutes.
+          </p>
+
+          <div class="stack">
+            <span>Terraform</span>
+            <span>VPC</span>
+            <span>IAM</span>
+            <span>S3</span>
+            <span>EKS</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-type">DevSecOps · CI/CD</p>
+          <h3>Secure GitHub Actions Pipeline</h3>
+          <p>
+            Designed CI/CD workflows with linting, testing, Docker builds, Trivy scanning,
+            and Kubernetes rolling deployments.
+          </p>
+
+          <div class="stack">
+            <span>GitHub Actions</span>
+            <span>Docker</span>
+            <span>Trivy</span>
+            <span>ECR</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-type">Observability · SRE</p>
+          <h3>Cloud Monitoring Dashboard</h3>
+          <p>
+            Built Prometheus and Grafana dashboards for latency, error rate, pod health,
+            and faster incident detection.
+          </p>
+
+          <div class="stack">
+            <span>Prometheus</span>
+            <span>Grafana</span>
+            <span>CloudWatch</span>
+            <span>PagerDuty</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-type">Automation · Healthcare</p>
+          <h3>ServiceNow Reporting Automation</h3>
+          <p>
+            Automated compliance reports and recurring sync jobs using Python and PowerShell,
+            saving 8 to 10 hours of manual effort each month.
+          </p>
+
+          <div class="stack">
+            <span>Python</span>
+            <span>PowerShell</span>
+            <span>ServiceNow</span>
+            <span>REST APIs</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <p class="project-type">Database · Performance</p>
+          <h3>SQL Query Optimization</h3>
+          <p>
+            Improved SQL response time from 8 seconds to under 1 second on a 50K+ record
+            healthcare platform.
+          </p>
+
+          <div class="stack">
+            <span>SQL</span>
+            <span>PostgreSQL</span>
+            <span>Indexing</span>
+            <span>Optimization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS SECTION -->
+    <section id="credentials" class="section">
+      <p class="section-label">Proof of Work</p>
+      <h2>Credentials & Education</h2>
+
+      <div class="credentials-grid">
+        <div class="credential-card">
+          <h3>AWS Certified DevOps Engineer</h3>
+          <p>Professional</p>
+        </div>
+
+        <div class="credential-card">
+          <h3>Certified Kubernetes Administrator</h3>
+          <p>CKA</p>
+        </div>
+
+        <div class="credential-card">
+          <h3>HashiCorp Certified</h3>
+          <p>Terraform Associate</p>
+        </div>
+
+        <div class="credential-card">
+          <h3>MS in Information Science</h3>
+          <p>University at Albany · GPA 3.5/4.0</p>
+        </div>
+
+        <div class="credential-card">
+          <h3>B.Tech Computer Science</h3>
+          <p>GITAM University · India</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <p class="section-label">Recruiter-Ready Communication Channel</p>
+      <h2>Get in Touch</h2>
+
+      <div class="contact-card">
+        <div>
+          <p class="card-label">Contact Metadata</p>
+          <h3>Devi Sharanya Pasala</h3>
+          <p>Albany, NY · Open to Relocate</p>
+        </div>
+
+        <div class="contact-links">
+          <a href="mailto:devisharanyap@gmail.com">devisharanyap@gmail.com</a>
+          <a href="tel:+15185919702">518-591-9702</a>
+          <a href="https://www.linkedin.com/in/devisharanya/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/DeviSharanyaPasala" target="_blank">GitHub</a>
+        </div>
+
+        <p class="availability">
+          Open to DevOps Engineer, Cloud Engineer, Site Reliability Engineer, and Platform Engineering roles.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Devi Sharanya Pasala · DevOps Engineer</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
