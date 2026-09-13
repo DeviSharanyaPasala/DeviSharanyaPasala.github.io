@@ -926,3 +926,520 @@ footer {
     flex-direction: column;
   }
 }
+
+/* =========================================================
+   TECHNICAL DEVOPS UI ENHANCEMENTS
+   ========================================================= */
+
+:root {
+  --terminal-bg: #050912;
+  --terminal-line: rgba(112, 255, 198, 0.16);
+  --terminal-green: #70ffc6;
+}
+
+
+/* technical background grid */
+
+body::before {
+  content: "";
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      rgba(112, 255, 198, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(112, 255, 198, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 24px 24px;
+}
+
+
+
+/* =========================================================
+   TERMINAL
+   ========================================================= */
+
+.technical-panel {
+  padding: 0;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  border: 0;
+
+  box-shadow: none;
+}
+
+
+.terminal-window {
+  border: 1px solid rgba(112, 255, 198, 0.22);
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  background: #050912;
+
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.58);
+}
+
+
+.terminal-bar {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 16px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+
+.terminal-dots {
+  display: flex;
+
+  gap: 7px;
+}
+
+
+.terminal-dots span {
+  width: 10px;
+
+  height: 10px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+}
+
+
+.terminal-title {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 12px;
+
+  color: var(--muted);
+}
+
+
+.terminal-body {
+  padding: 22px;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.terminal-body p {
+  color: #dce8f5;
+
+  margin-bottom: 8px;
+}
+
+
+.prompt {
+  color: var(--accent);
+
+  font-weight: 800;
+}
+
+
+.terminal-output {
+  color: var(--accent-2) !important;
+
+  margin-left: 18px;
+
+  margin-bottom: 18px !important;
+}
+
+
+
+/* YAML CODE */
+
+.code-block {
+  margin: 10px 0 18px;
+
+  padding: 16px;
+
+  border:
+    1px solid rgba(120, 168, 255, 0.16);
+
+  border-radius: 16px;
+
+  background:
+    rgba(120, 168, 255, 0.045);
+
+  color: #cfe0f1;
+
+  overflow-x: auto;
+
+  white-space: pre-wrap;
+}
+
+
+
+/* KUBECTL TABLE */
+
+.terminal-table {
+  display: grid;
+
+  grid-template-columns:
+    1.4fr 0.8fr;
+
+  gap:
+    8px 16px;
+
+  margin-top: 10px;
+
+  padding: 14px;
+
+  border:
+    1px solid rgba(112, 255, 198, 0.12);
+
+  border-radius: 16px;
+
+  background:
+    rgba(112, 255, 198, 0.035);
+}
+
+
+.terminal-table span {
+  color: #c9d9e8;
+}
+
+
+.terminal-table span:nth-child(-n + 2) {
+  color: var(--muted);
+
+  font-weight: 800;
+
+  font-size: 11px;
+
+  letter-spacing: 0.8px;
+}
+
+
+.terminal-table .ok {
+  color: var(--accent);
+}
+
+
+
+/* =========================================================
+   PLATFORM ARCHITECTURE
+   ========================================================= */
+
+.architecture-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr;
+
+  gap: 12px;
+
+  align-items: center;
+
+  margin-top: 28px;
+}
+
+
+.arch-node {
+  min-height: 150px;
+
+  padding: 20px;
+
+  border:
+    1px solid var(--card-border);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12, 20, 38, 0.92),
+      rgba(7, 12, 23, 0.92)
+    );
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: 0.25s ease;
+}
+
+
+.arch-node:hover {
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(112, 255, 198, 0.4);
+}
+
+
+.arch-node::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 58%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      transparent
+    );
+}
+
+
+.arch-index {
+  color: var(--accent);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+}
+
+
+.arch-node h3 {
+  margin:
+    14px 0 6px;
+
+  font-size: 20px;
+}
+
+
+.arch-node p {
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+.arch-arrow {
+  color: var(--accent-2);
+
+  font-size: 24px;
+
+  font-family: monospace;
+
+  text-shadow:
+    0 0 14px rgba(120, 168, 255, 0.5);
+}
+
+
+
+/* =========================================================
+   TECH COMMAND CARDS
+   ========================================================= */
+
+.tech-notes {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-top: 22px;
+}
+
+
+.tech-notes > div {
+  padding: 18px;
+
+  border-radius: 20px;
+
+  border:
+    1px solid rgba(120, 168, 255, 0.14);
+
+  background:
+    rgba(120, 168, 255, 0.035);
+
+  transition: 0.25s ease;
+}
+
+
+.tech-notes > div:hover {
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(112, 255, 198, 0.32);
+}
+
+
+.tech-notes code {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: var(--accent);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 13px;
+}
+
+
+.tech-notes p {
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+
+/* =========================================================
+   TECH TYPOGRAPHY
+   ========================================================= */
+
+.section-label,
+.card-label,
+.project-type,
+.arch-index {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+
+.stack span,
+.tag-cloud span {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+
+.skill-card h3,
+.project-card h3,
+.experience-header h3,
+.arch-node h3 {
+  letter-spacing: -0.6px;
+}
+
+
+
+/* =========================================================
+   TECH STACK TAG HOVER
+   ========================================================= */
+
+.stack span {
+  transition:
+    0.2s ease;
+}
+
+
+.stack span:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(112, 255, 198, 0.42);
+
+  box-shadow:
+    0 0 16px rgba(112, 255, 198, 0.08);
+}
+
+
+
+/* =========================================================
+   FOOTER CLI
+   ========================================================= */
+
+.footer-cli {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  color: var(--accent);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 12px;
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .architecture-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .arch-arrow {
+    transform:
+      rotate(90deg);
+
+    text-align: center;
+  }
+
+
+  .tech-notes {
+    grid-template-columns: 1fr;
+  }
+
+}
